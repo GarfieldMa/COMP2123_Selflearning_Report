@@ -19,7 +19,7 @@ public:
 	void addEdge( const VertexType& v1, const VertexType& v2 );
 	void deleteEdge( const VertexType& v1, VertexType& v2 );
 private:
-	map<VertexType, int> HashTable; //indexing vertex
+	map<VertexType,int> HashTable; //indexing vertex
 	vector<list<int> > adjacentList;
 	int num_of_vertex;	
 	bool directed;
@@ -66,15 +66,16 @@ void Graph<VertexType>::deleteVertex( const VertexType& v ){
 template <typename VertexType>
 bool Graph<VertexType>::adjacentCheck( const VertexType& v1, const VertexType& v2 ) const{
 	int index_1, index_2;
-	index_1 = index_2 = -1;
+	index_1 = -1;
+	index_2 = -1;
 	if ( HashTable.count( v1 ) != 0 ){
-		index_1 = HashTable[ v1 ];
+		index_1 = this -> HashTable.at( v1 );
 	}
 	if ( HashTable.count( v2 ) != 0 ){
-		index_2 = HashTable[ v2 ];
+		index_2 = this -> HashTable.at( v2 );
 	}
 	if ( index_1 != -1 && index_2 != -1 ){
-		for ( list<int>::iterator it = this -> adjacentList[ index_1 ].begin(); it != this -> adjacentList[ index_1 ].end(); it++ ){
+		for ( list<int>::const_iterator it = this -> adjacentList[ index_1 ].begin(); it != this -> adjacentList[ index_1 ].end(); it++ ){
 			if ( (*it) == index_2 ){
 				return true;
 			}
@@ -90,12 +91,12 @@ template <typename VertexType>
 vector<VertexType> Graph<VertexType>::getAllAdjacentVertex( const VertexType& v ) const{
 	vector<VertexType> adjVertex;
 	if ( HashTable.count( v ) != 0 ){
-		int index = HashTable[ v ];
+		int index = HashTable.at( v );
 		vector<int> adj_index;
-		for ( list<int>::iterator it = this -> adjacentList[ index ].begin(); it != this -> adjacentList[ index ].end(); it++ ){
+		for ( list<int>::const_iterator it = this -> adjacentList[ index ].begin(); it != this -> adjacentList[ index ].end(); it++ ){
 			adj_index.push_back( *it );
 		}
-		for ( typename map<VertexType, int>::iterator it = this -> HashTable.begin(); it != this -> HashTable.end(); it++ ){
+		for ( typename map<VertexType, int>::const_iterator it = this -> HashTable.begin(); it != this -> HashTable.end(); it++ ){
 			if ( it -> second == index ){
 				adjVertex.push_back( it -> first );
 			}
@@ -112,10 +113,10 @@ void Graph<VertexType>::addEdge( const VertexType& v1, const VertexType& v2 ){
 	int index_1, index_2;
 	index_1 = index_2 = -1; 
 	if ( this -> HashTable.count( v1 ) != 0 ){
-		index_1 = this -> HashTable[ v1 ];
+		index_1 = this -> HashTable.at( v1 );
 	}
-	if ( this -> HashTable( v2 ) != 0 ){
-		index_2 = this -> HashTable[ v2 ];
+	if ( this -> HashTable.count( v2 ) != 0 ){
+		index_2 = this -> HashTable.at( v2 );
 	}
 	if ( index_1 != -1 && index_2 != -1 ){
 		if ( this -> adjacentCheck( v1, v2 ) == false ){
