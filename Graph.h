@@ -1,6 +1,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+#include <iostream>
 #include <list>
 #include <map>
 #include <vector>
@@ -37,127 +38,165 @@ Graph<VertexType>::Graph(){
 
 template <typename VertexType>
 void Graph<VertexType>::addVertex( const VertexType& v ){
-	if ( this -> HashTable.count( v ) == 0 ){
-		HashTable[ v ] = num_of_vertex;
-		list<int> l;
-		adjacentList.push_back( l );
-		num_of_vertex++;
+	try{
+		if ( this -> HashTable.count( v ) == 0 ){
+			HashTable.insert( pair<VertexType, int>( v, num_of_vertex ) );
+			list<int> l;
+			adjacentList.push_back( l );
+			num_of_vertex++;
+		}
+		else{
+			throw 0;
+		}
+	}
+	catch(...){
+		cout << "vertex already exists" << endl;
 	}
 }
 
 template <typename VertexType>
 void Graph<VertexType>::deleteVertex( const VertexType& v ){
-	if ( this -> HashTable.count( v ) != 0 ){
-		int index = this -> HashTable[ v ];
-		this -> adjacentList.erase( this -> adjacentList.begin() + index );
-		for ( vector<list<int> >::iterator it_vector = this -> adjacentList.begin(); it_vector != this -> adjacentList.end(); it_vector++ ){
-			for ( list<int>::iterator it_list = it_vector -> begin(); it_list != it_vector -> end(); ){
-				if ( (*it_list) == index ){
-					it_list = it_vector -> erase( it_list );
-				}
-				else{
-					it_list++;
+	try{
+		if ( this -> HashTable.count( v ) != 0 ){
+			int index = this -> HashTable[ v ];
+			this -> adjacentList.erase( this -> adjacentList.begin() + index );
+			for ( auto it_vector = this -> adjacentList.begin(); it_vector != this -> adjacentList.end(); it_vector++ ){
+				for ( auto it_list = it_vector -> begin(); it_list != it_vector -> end(); ){
+					if ( (*it_list) == index ){
+						it_list = it_vector -> erase( it_list );
+					}
+					else{
+						it_list++;
+					}
 				}
 			}
 		}
+		else{
+			throw 0;
+		}
 	}
+	catch(...){
+		cout << "vertex doesn't exist" << endl;
+	}
+
 }
 
 template <typename VertexType>
 bool Graph<VertexType>::adjacentCheck( const VertexType& v1, const VertexType& v2 ) const{
-	int index_1, index_2;
-	index_1 = -1;
-	index_2 = -1;
-	if ( HashTable.count( v1 ) != 0 ){
-		index_1 = this -> HashTable.at( v1 );
-	}
-	if ( HashTable.count( v2 ) != 0 ){
-		index_2 = this -> HashTable.at( v2 );
-	}
-	if ( index_1 != -1 && index_2 != -1 ){
-		for ( list<int>::const_iterator it = this -> adjacentList[ index_1 ].begin(); it != this -> adjacentList[ index_1 ].end(); it++ ){
+	try{
+		int index_1, index_2;
+		if ( HashTable.count( v1 ) != 0 ){
+			index_1 = this -> HashTable.at( v1 );
+		}
+		else{
+			throw 1;
+		}
+		if ( HashTable.count( v2 ) != 0 ){
+			index_2 = this -> HashTable.at( v2 );
+		}
+		else{
+			throw 2;
+		}
+		for ( auto it = this -> adjacentList.at( index_1 ).begin(); it != this -> adjacentList.at( index_1 ).end(); it++ ){
 			if ( (*it) == index_2 ){
 				return true;
 			}
 		}
 		return false;
 	}
-	else{
-		return false;
+	catch(int err_code){
+		cout << "v" << err_code << " doesn't exist" << endl;
 	}
 }
 
 template <typename VertexType>
-vector<VertexType> Graph<VertexType>::getAllAdjacentVertex( const VertexType& v ) const{
-	vector<VertexType> adjVertex;
-	if ( HashTable.count( v ) != 0 ){
-		int index = HashTable.at( v );
-		vector<int> adj_index;
-		for ( list<int>::const_iterator it = this -> adjacentList[ index ].begin(); it != this -> adjacentList[ index ].end(); it++ ){
-			adj_index.push_back( *it );
-		}
-		for ( typename map<VertexType, int>::const_iterator it = this -> HashTable.begin(); it != this -> HashTable.end(); it++ ){
-			if ( it -> second == index ){
-				adjVertex.push_back( it -> first );
+vector<VertexType> Graph<VertexType>::getAllAdjacentVertex( const VertexType& v ) const{	
+	try{
+		vector<VertexType> adjVertex;
+		if ( HashTable.count( v ) != 0 ){
+			int index = HashTable.at( v );
+			vector<int> adj_index;
+			for ( auto it = this -> adjacentList.at( index ).begin(); it != this -> adjacentList.at( index ).end(); it++ ){
+				adj_index.push_back( *it );
 			}
+			for ( auto it = this -> HashTable.begin(); it != this -> HashTable.end(); it++ ){
+				if ( it -> second == index ){
+					adjVertex.push_back( it -> first );
+				}
+			}
+			return adjVertex;
 		}
-		return adjVertex;
+		else{
+			throw 0;
+		}
 	}
-	else{
-		return adjVertex;
+	catch(...){
+		cout << "vertex doesn't exist" << endl;
 	}
 }
 
 template <typename VertexType>
-void Graph<VertexType>::addEdge( const VertexType& v1, const VertexType& v2 ){
-	int index_1, index_2;
-	index_1 = index_2 = -1; 
-	if ( this -> HashTable.count( v1 ) != 0 ){
-		index_1 = this -> HashTable.at( v1 );
-	}
-	if ( this -> HashTable.count( v2 ) != 0 ){
-		index_2 = this -> HashTable.at( v2 );
-	}
-	if ( index_1 != -1 && index_2 != -1 ){
+void Graph<VertexType>::addEdge( const VertexType& v1, const VertexType& v2 ){\
+	try{
+		int index_1, index_2;
+		index_1 = index_2 = -1; 
+		if ( this -> HashTable.count( v1 ) != 0 ){
+			index_1 = this -> HashTable.at( v1 );
+		}
+		else{
+			throw 1;
+		}
+		if ( this -> HashTable.count( v2 ) != 0 ){
+			index_2 = this -> HashTable.at( v2 );
+		}
+		else{
+			throw 2;
+		}
 		if ( this -> adjacentCheck( v1, v2 ) == false ){
-			this -> adjacentList[ index_1 ].push_back( index_2 );
+			this -> adjacentList.at( index_1 ).push_back( index_2 );
 			if ( this -> directed == false ){
-				this -> adjacentList[ index_2 ].push_back( index_1 );
+				this -> adjacentList.at( index_2 ).push_back( index_1 );
 			}
 		}
 		else{
 			return;
 		}
 	}
-	else{
-		return;
+	catch(int err_code){
+		cout << "v" << err_code << " doesn't exist" << endl;
 	}
+	
 }
 
 template <typename VertexType>
 void Graph<VertexType>::deleteEdge( const VertexType& v1, VertexType& v2 ){
-	int index_1, index_2;
-	index_1 = index_2 = -1; 
-	if ( this -> HashTable.count( v1 ) != 0 ){
-		index_1 = this -> HashTable[ v1 ];
-	}
-	if ( this -> HashTable( v2 ) != 0 ){
-		index_2 = this -> HashTable[ v2 ];
-	}
-	if ( index_1 != -1 && index_2 != -1 ){
+	try{
+		int index_1, index_2;
+		if ( this -> HashTable.count( v1 ) != 0 ){
+			index_1 = this -> HashTable.at( v1 );
+		}
+		else{
+			throw 1;
+		}
+		if ( this -> HashTable( v2 ) != 0 ){
+			index_2 = this -> HashTable.at( v2 );
+		}
+		else{
+			throw 2;
+		}
 		if ( this -> adjacentCheck( v1, v2 ) == true ){
-			for ( list<int>::iterator it = this -> adjacentList[ index_1 ].begin(); it != this -> adjacentList[ index_1 ].end(); ){
+			for ( auto it = this -> adjacentList.at( index_1 ).begin(); it != this -> adjacentList.at( index_1 ).end(); ){
 				if ( (*it) == index_2 ){
-					it = this -> adjacentList[ index_1 ].erase( it );
+					it = this -> adjacentList.at( index_1 ).erase( it );
 				}
 				else{
 					it++;
 				}
 			}
 			if ( this -> directed == false ){
-				for ( list<int>::iterator it = this -> adjacentList[ index_2 ].begin(); it != this -> adjacentList[ index_2 ].end(); ){
+				for ( auto it = this -> adjacentList.at( index_2 ).begin(); it != this -> adjacentList.at( index_2 ).end(); ){
 					if ( (*it) == index_1 ){
-						it = this -> adjacentList[ index_2 ].erase( it );
+						it = this -> adjacentList.at( index_2 ).erase( it );
 					}
 					else{
 						it++;
@@ -166,11 +205,18 @@ void Graph<VertexType>::deleteEdge( const VertexType& v1, VertexType& v2 ){
 			}
 		}
 		else{
-			return;
+			throw 3;
 		}
+		
 	}
-	else{
-		return;
+	catch( int err_code ){
+		if ( err_code != 3 ){
+			cout << "v" << err_code << " doesn't exist" << endl;	
+		}
+		else{
+			cout << "edge doesn't exist" << endl;
+		}
+		
 	}
 }
 #endif
