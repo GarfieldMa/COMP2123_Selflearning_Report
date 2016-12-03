@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <iostream>
+#include <algorithm>
 #include <list>
 #include <map>
 #include <vector>
@@ -18,18 +19,20 @@ public:
 	void addVertex( const VertexType& v );
 	void deleteVertex( const VertexType& v );
 	bool adjacentCheck( const VertexType& v1, const VertexType& v2 ) const;
+	bool contain( const VertexType& v ) const;
 	vector<VertexType> getAllAdjacentVertex( const VertexType& v ) const;
+	int getNumOfVertex() const;
 	void addEdge( const VertexType& v1, const VertexType& v2, int weight );
 	void addEdge( const VertexType& v1, const VertexType& v2 );
 	void deleteEdge( const VertexType& v1, VertexType& v2 );
+	int getEdge( const VertexType& v1, const VertexType& v2 ) const;
+	Graph primsMinimumSpanningTree();
 private:
 	map<VertexType,int> HashTable; //indexing vertex
 	vector<list<pair<int, int> > > adjacentList;
 	int num_of_vertex;	
 	bool directed;
 };
-
-
 
 template <typename VertexType>
 Graph<VertexType>::Graph(){
@@ -96,6 +99,11 @@ void Graph<VertexType>::deleteVertex( const VertexType& v ){
 					}
 				}
 			}
+			for ( auto it = lower_bound( this -> HashTable.begin(), this -> HashTable.end(), v); it != this -> HashTable.end(); it++ ){
+				it -> second--; 
+			}
+			this -> num_of_vertex--;
+			this -> HashTable.erase( v );
 		}
 		else{
 			throw 0;
@@ -249,4 +257,103 @@ void Graph<VertexType>::deleteEdge( const VertexType& v1, VertexType& v2 ){
 		
 	}
 }
+
+template <typename VertexType>
+int Graph<VertexType>::getEdge( const VertexType& v1, const VertexType& v2 ) const{
+	try{
+		int index_1, index_2;
+		if ( HashTable.count( v1 ) != 0 ){
+			index_1 = this -> HashTable.at( v1 );
+		}
+		else{
+			throw 1;
+		}
+		if ( HashTable.count( v2 ) != 0 ){
+			index_2 = this -> HashTable.at( v2 );
+		}
+		else{
+			throw 2;
+		}
+		for ( auto it = this -> adjacentList.at( index_1 ).begin(); it != this -> adjacentList.at( index_1 ).end(); it++ ){
+			if ( it -> first == index_2 ){
+				return it -> second;
+			}
+		}
+		throw 3;
+	}
+	catch( int err_code ){
+		if ( err_code == 3 ){
+			cout << "Vertices are not adjacent" << endl; 
+		}
+		else{
+			cout << "v" << err_code << " doesn't exist" << endl;
+		}
+	}
+}
+
+
+template<typename VertexType>
+bool Graph<VertexType>::contain( const VertexType& v ) const{
+	if ( this -> HashTable.count( v ) == 0 ){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+
+template <typename VertexType>
+int Graph<VertexType>::getNumOfVertex() const{
+	return this -> num_of_vertex;
+}
+
+template <typename VertexType>
+Graph<VertexType> Graph<VertexType>::primsMinimumSpanningTree(){
+	//construct a new indirected graph
+	Graph<VertexType> minimum_spanning_tree( false );
+
+	//init the new graph with first vertex in the graph
+	minimum_spanning_tree.addVertex( this -> getVertex( 0 ) );
+
+	//we want to add all the vertex in original graph into the new graph
+	for ( auto it_original = this -> HashTable.begin(); it_original < this -> HashTable.end(); it_original++ ){
+
+		//test if we have already added all the vertex into the new graph
+		if ( minimum_spanning_tree.getNumOfVertex() == this -> getNumOfVertex() ){
+			break;
+		}
+
+		//get a vector of all the adjacent 
+		auto vec_adjacent_vertex = this -> getAllAdjacentVertex( *it_original );
+
+		int min_edge = 0x7fffffff;
+		VertexType* ptr_min_v = NULL;
+		for( auto it_adj_v = vec_adjacent_vertex.begin(); it_adj_v != vec_adjacent_vertex.end(); it_adj_v++ ){
+
+			//if *it hasn't been included in the new graph
+			if ( minimum_spanning_tree.contain( *it_adj_v ) == false ){
+
+				int edge = this->getEdge( *it_original, *it_adj_v );
+
+				//see if it is smaller than the current min_edge
+				if ( edge < min_edge ){
+
+					//update
+					min_edge = edge;
+					ptr_min_v = *it_adj_v;
+				}
+			}
+		}
+
+		//add min_v into the new graph
+		if ( ptr_min_v != NULL ){
+			minimum_spanning_tree.addVertex( *ptr_min_v );
+			minimum_spanning_tree.addEdge( *it_original, *ptr_min_v );
+		}
+	}
+
+	return minimum_spanning_tree;
+}
+
 #endif
