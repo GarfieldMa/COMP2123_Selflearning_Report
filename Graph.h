@@ -2,7 +2,7 @@
 #define GRAPH_H
 
 #include <iostream>
-#include <algorithm>
+//#include <algorithm>
 #include <list>
 #include <map>
 #include <vector>
@@ -65,7 +65,7 @@ VertexType Graph<VertexType>::getVertex( int index ){
     catch(...){
         cout << "vertex " << index << " doesn't exist" << endl;
     }
-    
+
     VertexType garbage;
     return garbage;
 }
@@ -117,7 +117,7 @@ void Graph<VertexType>::deleteVertex( const VertexType& v ){
     catch(...){
         cout << "vertex doesn't exist" << endl;
     }
-    
+
 }
 
 template <typename VertexType>
@@ -248,7 +248,7 @@ void Graph<VertexType>::deleteEdge( const VertexType& v1, VertexType& v2 ){
         else{
             throw 3;
         }
-        
+
     }
     catch( int err_code ){
         if ( err_code != 3 ){
@@ -257,7 +257,7 @@ void Graph<VertexType>::deleteEdge( const VertexType& v1, VertexType& v2 ){
         else{
             cout << "edge doesn't exist" << endl;
         }
-        
+
     }
 }
 
@@ -322,47 +322,47 @@ template <typename VertexType>
 Graph<VertexType> Graph<VertexType>::primsMinimumSpanningTree(){
     //construct a new indirected graph
     Graph<VertexType> minimum_spanning_tree( false );
-    
+
     //init the new graph with first vertex in the graph
     minimum_spanning_tree.addVertex( this -> getVertex( 0 ) );
-    
+
     //we want to add all the vertex in original graph into the new graph
     for ( auto it_original = this -> HashTable.begin(); it_original != this -> HashTable.end(); it_original++ ){
-        
+
         //test if we have already added all the vertex into the new graph
         if ( minimum_spanning_tree.getNumOfVertex() == this -> getNumOfVertex() ){
             break;
         }
-        
+
         //get a vector of all the adjacent
         auto vec_adjacent_vertex = this -> getAllAdjacentVertex( it_original -> first );
-        
+
         int min_edge = 0x7fffffff;
         VertexType* ptr_min_v = NULL;
         for( auto it_adj_v = vec_adjacent_vertex.begin(); it_adj_v != vec_adjacent_vertex.end(); it_adj_v++ ){
-            
+
             //if *it hasn't been included in the new graph
             if ( minimum_spanning_tree.contain( *it_adj_v ) == false ){
-                
+
                 int edge = this->getEdge( it_original -> first, *it_adj_v );
-                
+
                 //see if it is smaller than the current min_edge
                 if ( edge < min_edge ){
-                    
+
                     //update
                     min_edge = edge;
                     *ptr_min_v = *it_adj_v;
                 }
             }
         }
-        
+
         //add min_v into the new graph
         if ( ptr_min_v != NULL ){
             minimum_spanning_tree.addVertex( *ptr_min_v );
             minimum_spanning_tree.addEdge( it_original->first, *ptr_min_v );
         }
     }
-    
+
     return minimum_spanning_tree;
 }
 

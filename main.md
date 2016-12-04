@@ -14,8 +14,13 @@ Today there’s gonna be something exciting to learn and at the end of day, you 
 *”So what is a minimum-spanning-tree problem anyways?”*
 Great question! In simple words, it is about finding a set of shortest possible edges of a *connected*, *edge-weighted* and *undirected* graph that connects all the vertices together without cycles. OK that’s quite a lot of information and really not simple I admit, but if you take a closer look it’s actually pretty simple and logical:
 
-First the graph is …
+First the graph is 
+…
+
 - Connected: //TODO
+
+![](resources/connected_graph.png! )
+
 - Edge-Weighted: //TODO
 - Undirected: //TODO
 
@@ -24,6 +29,7 @@ First the graph is …
 - Shortest-possible: //TODO
 - Connects all vertices together
 - Without cycles
+
 
 And that’s it!
 *”But how do we find that though?”*
