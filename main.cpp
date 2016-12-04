@@ -62,13 +62,13 @@ Graph<double> prim(Graph<double> g, int root){
 #if DEBUG
             cout << *it << endl;
 #endif
-            if (visited[g.getStorageIndex(*it)] == false && g.getStorageIndex(*it) != cheapest_vertex_index)
+            if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_index)
             {
                 int cost = g.getEdge(g.getVertex(cheapest_vertex_index), *it);
-                if (cost <= cost_of_cheapest_connection_to[g.getStorageIndex(*it)])
+                if (cost <= cost_of_cheapest_connection_to[g.getIndex(*it)])
                 {
-                    cost_of_cheapest_connection_to[g.getStorageIndex(*it)] = cost;
-                    source_of_cheapest_connection_to[g.getStorageIndex(*it)] = cheapest_vertex_index;
+                    cost_of_cheapest_connection_to[g.getIndex(*it)] = cost;
+                    source_of_cheapest_connection_to[g.getIndex(*it)] = cheapest_vertex_index;
                 }
             }
         }
@@ -113,6 +113,18 @@ int main(){
         for (int j = 0; j < MST.getAllAdjacentVertex(MST.getVertex(i)).size(); ++j)
         {
             cout << MST.getAllAdjacentVertex(MST.getVertex(i))[j] << ' ';
+        }
+        cout << endl;
+    }
+
+    cout << "***********original graph*************" << endl;
+    for (int i = 0; i < g.getNumOfVertex(); ++i)
+    {
+        cout << "Vertex: " << g.getVertex(i) << endl;
+        cout << "It is connected to: ";
+        for (int j = 0; j < g.getAllAdjacentVertex(g.getVertex(i)).size(); ++j)
+        {
+            cout << g.getAllAdjacentVertex(g.getVertex(i))[j] << ' ';
         }
         cout << endl;
     }
