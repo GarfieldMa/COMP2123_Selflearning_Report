@@ -28,3 +28,24 @@ First the graph is …
 And that’s it!
 *”But how do we find that though?”*
 Great question again, then here comes our main guest today - **Prim’s Algorithm**!
+
+## What is Prim’s Algorithm About?
+In simple words, … 
+
+… a pseudo code of this algorithm would be like this:
+```
+/* insert ADAPTED pseudocode here */
+```
+
+### Your Trusty Data Structure - Graph
+But how can we do this in C++? First we need to have  a data structure for modeling a *graph*. A graph is …, and as this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! In this implementation we used *adjacency list* to model a graph, to find out more about it, you can visit [XXXXXX](LINK_TO_BE_CHANGED!!!). For today, you only need to know our `Graph.h` contains the following methods that you could make use of when implementing our algorithm:
+
+- `addVertex()` which adds XXXX
+- `and some other stuff`
+- …
+ 
+And now you are equipped with our weapon and shield, we can finally go on our conquest to find our *Minimum-Spanning-Tree*!
+
+## Let’s Do It!
+First we gonna grab ‘em by the p*ssy by declaring … to be continued.
+
