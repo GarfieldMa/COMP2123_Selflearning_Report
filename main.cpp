@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Graph.h"
 #define DEBUG 0
 
@@ -78,30 +79,33 @@ Graph<double> prim(Graph<double> g, int root){
 
 int main(){
     //creating a new undirected graph containing our workspace
-    //in this demonstration we will be using int vertices, which means each vertex
+    //in this demonstration we will be using double vertices, which means each vertex contains a double variable (using double to avoid the confusion of vertex data with vertex storage index)
     Graph<double> g(false);
 
-    //creating a bunch of vertices to be added to the graph
-    //the value of each int vertex is their index in the graph
-    double A = 0;
-    double B = 1;
-    double C = 2;
-    double D = 3;
+    //create an empty graph reference for holding the result of algorithm
+    Graph<double> MST;
 
-    //now add the vertices to the graph
-    g.addVertex(A);
-    g.addVertex(B);
-    g.addVertex(C);
-    g.addVertex(D);
+    string command;
+    double a, b, weight;
 
-    //Now we create some edges connecting the vertices to complete the graph
-    g.addEdge(A, B, 2);
-    g.addEdge(A, D, 1);
-    g.addEdge(B, D, 2);
-    g.addEdge(C, D, 3);
+    while (cin >> command) {
+      if (command == "addVertex") {
+        cin >> a;
+        g.addVertex(a);
+      }
+      else if (command == "addEdge") {
+        cin >> a >> b >> weight;
+        g.addEdge(a, b, weight);
+      }
+      else if (command == "runPrim") {
+        cin >> a; // a for the storage index of the root of MST
+        MST = prim(g, a);
+      }
+      else
+        cout << "Command error!" << endl;
+    }
 
-    //Now call the Prim's algorithm function we just implemented
-    Graph<double> MST = prim(g, 0);
+    //Use this loop to show the resulting MST
     for (int i = 0; i < MST.getNumOfVertex(); ++i)
     {
         cout << "Vertex: " << MST.getVertex(i) << endl;
