@@ -54,18 +54,16 @@ Recall from what you have learnt in COMP2120😀, edge-weghted means that there 
 Recall from what you have learnt in COMP2120😀, all edges in the graph indicate a two-way relationship which means they can be travesed in two directions. 
 
 ## Great! Now you know what context we are in, let's move on to see what we are looking for ---- a Minimum-Spanning-Tree!
-### What is a tree?
+### What is a tree in a graph?
 Recall from what you have learnt in COMP2120😀, tree is a connected graph with no circle.
 
 
-### What is a Spanning-Tree in a graph?
+### What is a Spanning-Tree?
 We call a tree a Spanning-Tree of graph g if and only if the tree spans (in other words includes) all the vertices in that graph.
 
-### What is a Minimum-Spanning-Tree in a graph?
-<img src="resources/mst_1.png" width="30%" style="float :left">
-
+### What is a Minimum-Spanning-Tree?
 A Minimum-Spanning-Tree is a spanning tree with ***minimum*** total weight among all spanning tree. **This is what we are looking for!😃**
-<br /><br /><br /><br />
+
 
 
 And that’s it!
@@ -73,32 +71,17 @@ And that’s it!
 Great question again, then here comes our main guest today - **Prim’s Algorithm**!
 
 ## What is Prim’s Algorithm About?
-##### In simple words, Prim's Algorimth can help us find the Minimum-Spanning-Tree we mentioned above.
+In simple words, Prim's Algorimth can help us find the Minimum-Spanning-Tree we mentioned above.
 
 
-#### The algorithm may be described in following steps:
-
-
+The algorithm may be described in following steps:
 
 1. Initialise a tree with an arbitrary node in the graph
-
 2. Find a node not yet in the tree that can be connected to existing tree with the minimum weight edge and add it to the tree.
 3. Repeat step 2 until all the nodes are in the tree
 
-<img src="resources/d1.png" width="20%"> --> 
-<img src="resources/d2.png" width="19.8%"> -->
-<img src="resources/d3.png" width="20%" > -->
-<img src="resources/d4.png" width="19.4%">-->
-<img src="resources/d5.png" width="20%"> --> 
-<img src="resources/d6.png" width="19.8%" > -->
-<img src="resources/d7.png" width="19.9%" > -->
-<img src="resources/d8.png" width="19.9%" >
-
-
-
-
 ### Your Trusty Data Structure - Graph
-How can we do this in C++? First we need to have  a data structure for modeling a *graph*. As this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! *It uses `template` in implementation for the purpose of a more generic usage, which could make some function calling a little bit diffrent from things you already know.* 
+But how can we do this in C++? First we need to have  a data structure for modeling a *graph*. As this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! *It uses `template` in implementation for the purpose of a more generic usage, which could make some function calling a little bit diffrent from things you already know.* 
 
 For today, we will use vertices of type `double` and weight of type `int` and you only need to know our `Graph.h` contains methods that you could make use of in following way when implementing our algorithm:
 
