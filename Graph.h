@@ -2,9 +2,7 @@
 #define GRAPH_H
 
 #include <iostream>
-#include <algorithm>
 #include <list>
-#include <map>
 #include <vector>
 
 #define MAX 0X7ffffff
@@ -30,8 +28,6 @@ public:
     void addEdge( const VertexType& v1, const VertexType& v2 );
     void deleteEdge( const VertexType& v1, VertexType& v2 );
     int getEdge( const VertexType& v1, const VertexType& v2 ) const;
-    int getStorageIndex( const VertexType& v ) const;
-    map<VertexType, int> getHashTable();
 private:
     vector<VertexType> vertices; //indexing vertex
     vector<vector<int> > adjMatrix;
@@ -74,7 +70,7 @@ int Graph<VertexType>::getIndex( const VertexType& v ) const{
 }
 
 
- 
+
 template <typename VertexType>
 void Graph<VertexType>::addVertex( const VertexType v ){
     try{
@@ -117,7 +113,7 @@ void Graph<VertexType>::deleteVertex( const VertexType& v ){
         }
         if ( index != -1 ){
             this -> vertices.erase( this -> vertices.begin() + index );
-            for ( auto it_i = this -> adjMatrix.begin(); it_i = this -> adjMatrix.end(); it_i++ ){
+            for ( auto it_i = this -> adjMatrix.begin(); it_i != this -> adjMatrix.end(); it_i++ ){
                 it_i -> erase( it_i -> begin() + index );
             }
             this -> adjMatrix.erase( this -> adjMatrix.begin() + index );
@@ -126,12 +122,12 @@ void Graph<VertexType>::deleteVertex( const VertexType& v ){
         else{
             throw 0;
         }
-        
+
     }
     catch(...){
         cout << "vertex doesn't exist" << endl;
     }
-    
+
 }
 
 template <typename VertexType>
