@@ -36,9 +36,10 @@ Recall from what you have learnt in COMP2121😀, a connected graph is a graph i
 
 ##### Examples
 <img src="https://vvvfo.github.io/COMP2123_report_resources/connected_graph.png" width="35%" style="float :left">
-<img src="https://vvvfo.github.io/COMP2123_report_resources/not_connected_graph.png" width="33%" style = "float : right">
-**On the left**
-is an example of connected graph since you can find a path  between any two vertices.
+
+<img src="https://vvvfo.github.io/COMP2123_report_resources/not_connected_graph.png" width="33%" style = "float : right”>
+
+**On the left** is an example of connected graph since you can find a path  between any two vertices.
 
 
 -------
