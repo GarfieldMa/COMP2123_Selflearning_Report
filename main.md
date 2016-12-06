@@ -1,10 +1,7 @@
 ---
-
 title: Solving the Minimum-Spanning-Tree Problem with Prim’s Algorithm
 subtitle: COMP2123 Group-Based Self-Learning Report
-
 author: MA Rutian, MAO Wenxu, YAO Qingning
-
 ---
 
 # Solving the Minimum-Spanning-Tree Problem with Prim’s Algorithm
@@ -12,7 +9,6 @@ author: MA Rutian, MAO Wenxu, YAO Qingning
 Today there’s gonna be something exciting to learn and at the end of day, you shall be able to:
 
 - Understand what is the *Minimum-Spanning-Tree Problem*
-
 - Know what is *Prim’s Algorithm* and how to implement it
 - Understand how Prim’s Algorthim could be used to solve the minimum-spanning-tree problem
 
@@ -22,31 +18,17 @@ Great question! In simple words, it is about finding a set of shortest possible 
 
 ### First thing: we are going to study the problem in this kind of graph …
 
-> Connected
->
-> Edge-Weighted
-> 
-> Undirected
-
-##### What does these words mean ?
-
 
 #### 1. "Connected"
 Recall from what you have learnt in COMP2121😀, a connected graph is a graph in which you can find a path between **any** two vertices. 
 
 ##### Examples
-<img src="https://vvvfo.github.io/COMP2123_report_resources/connected_graph.png" width="35%" style="float :left">
+<img src="https://vvvfo.github.io/COMP2123_report_resources/connected_graph.png" width="40%" style="float :center"> <img src="https://vvvfo.github.io/COMP2123_report_resources/not_connected_graph.png" width="38%" style="float :right">
 
-<img src="https://vvvfo.github.io/COMP2123_report_resources/not_connected_graph.png" width="33%" style = "float : right”>
-
-**On the left** is an example of connected graph since you can find a path  between any two vertices.
-
-
--------
-
+**On the left** is an example of connected graph since you can find a path  between any two vertices.**  is an example of connected graph since you can find a path  between any two vertices.
 
 **On the right** is **not** a connected graph as *3* is not connected to other parts of the graph. For instance, there is no path between *3* and *2*.
- <br /> <br /> <br /> <br /> <br /> 
+
 
 ####  2. "Edge-Weighted"
 Recall from what you have learnt in COMP2121😀, edge-weighted means that there is a numerical value for the weight of each edge.
@@ -74,19 +56,19 @@ And that’s it!
 Great question again, then here comes our main guest today - **Prim’s Algorithm**!
 
 ## What is Prim’s Algorithm About?
-##### In simple words, Prim's Algorithm can help us find the Minimum-Spanning-Tree we mentioned above.
+
+ **In simple words, Prim's Algorithm can help us find the Minimum-Spanning-Tree we mentioned above.**
 
 
-#### The algorithm may be described in following steps:
-
-
+*The algorithm may be described in following steps:*
 
 1. Initialize a tree with an arbitrary node in the graph
-
 2. Find a node not yet in the tree that can be connected to existing tree with the minimum weight edge and add it to the tree.
 3. Repeat step 2 until all the nodes are in the tree
 
-<img src="https://vvvfo.github.io/COMP2123_report_resources/d1.png" width="20%"> --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d2.png" width="19.8%"> --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d3.png" width="20%" > --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d4.png" width="19.4%">--> <img src="https://vvvfo.github.io/COMP2123_report_resources/d5.png" width="20%"> -->  <img src="https://vvvfo.github.io/COMP2123_report_resources/d6.png" width="19.8%" > --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d7.png" width="19.9%" > --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d8.png" width="19.9%" >
+① <img src="https://vvvfo.github.io/COMP2123_report_resources/d1.png" width="20%"> ② <img src="https://vvvfo.github.io/COMP2123_report_resources/d2.png" width="19.8%"> ③ <img src="https://vvvfo.github.io/COMP2123_report_resources/d3.png" width="20%" > ④ <img src="https://vvvfo.github.io/COMP2123_report_resources/d4.png" width="19.4%">
+
+⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/d5.png" width="20%"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/d6.png" width="19.8%" > ⑦ <img src="https://vvvfo.github.io/COMP2123_report_resources/d7.png" width="19.9%" > ⑧<img src="https://vvvfo.github.io/COMP2123_report_resources/d8.png" width="19.9%" >
 
 
 
@@ -137,23 +119,17 @@ Return whether a graph contains a vertex.
 And now you are equipped with our weapon and shield, we can finally go on our conquest to find our *Minimum-Spanning-Tree*!
 
 ## Let’s Do It!🤗
-- First, you need to open a file Prim.cpp
+- First, you need to open the existing file Prim.cpp. 🤗 Notice that the main function is already provided for you. You will be able to use it after the implementaiton
 		
 		gedit Prim.cpp
 
-- We need input and output, an provided implementation of graph and string for type specification in later stage, so please add following statements in `Prim.cpp`
-		
-		#include <iostream>
-		#include <string>
-		#include "Graph"
 	
 ### Let's implement this algorithm!🤗
 - First, let's include the skeleton!
-```
-Graph<double> prim(Graph<double> g, int root){
-		//All your code in this section find their way here😊
-}		
-```
+
+		Graph<double> prim(Graph<double> g, int root){
+			//All your code in this section find their way here😊
+		}		
 The return type should be a graph with double as vertices, same as the original graph. 
 
 Two arguments here are the graph we want to find our Minimum-Spanning Tree in and the arbitrary root we asign to start with.
@@ -265,10 +241,12 @@ Now its the time to scroll back to where funcitons in Graph.h is introduced caus
 
 It's simple to do this, isn't it? Guess you are ready to add the following to your code.😀
 
-	minimum_spanning_tree.addVertex(g.getVertex(cheapest_vertex_index));
-    if (root != cheapest_vertex_index) {
-        minimum_spanning_tree.addEdge(g.getVertex(cheapest_vertex_index), g.getVertex(source_of_cheapest_connection_to[cheapest_vertex_index]), cheapest_vertex_cost);
-    }
+```
+minimum_spanning_tree.addVertex(g.getVertex(cheapest_vertex_index));
+if (root != cheapest_vertex_index) {
+	minimum_spanning_tree.addEdge(g.getVertex(cheapest_vertex_index),g.getVertex(source_of_cheapest_connection_to[cheapest_vertex_index]), cheapest_vertex_cost);
+}
+```
  
  **Note : we have to perform a checking before adding an edge because the first node we add to the tree does not have anything to connect to.**
  
@@ -335,18 +313,18 @@ Wow, a lot happen in this step right? Don't worry, let's check if you got everyt
 	  vector<double> all_adjacencies = g.getAllAdjacentVertex(g.getVertex(cheapest_vertex_index));
       for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencies.end(); it++){
 
-            if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_index)
-            {
-                int cost = g.getEdge(g.getVertex(cheapest_vertex_index), *it);
-                if (cost <= cost_of_cheapest_connection_to[g.getIndex(*it)])
-                {
-                    cost_of_cheapest_connection_to[g.getIndex(*it)] = cost;
-                    source_of_cheapest_connection_to[g.getIndex(*it)] = cheapest_vertex_index;
-                }
-            }
-        }
+	if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_index)
+	{
+		int cost = g.getEdge(g.getVertex(cheapest_vertex_index), *it);
+		if (cost <= cost_of_cheapest_connection_to[g.getIndex(*it)])
+		{
+			cost_of_cheapest_connection_to[g.getIndex(*it)] = cost;
+			source_of_cheapest_connection_to[g.getIndex(*it)] = cheapest_vertex_index;
+		}
+	}
+	}
         
-#####  Congratulation ! That's all the stuff we need to put into the big while loop😃
+#####  Congratulations ! That's all the stuff we need to put into the big while loop😃
 We can return `minimum_spanning_tree` after the while loop and the implementation is done!
 
 Buuuuuut, 😌 one more thing to consider......How could we determine the first node to be added to be `root` as we promised in the declaration? This is a tricky question🤔
@@ -362,5 +340,16 @@ What you need to do is simply to add
 before while loop.
 
 ##### Great! Congratulation! You have finished implement this algorithm! 
-Can't wait to try if it works? We provide the.....for you in......	
+Can't wait to try if it works? We have provided the main method for you to test your code!☺️
+Now you should be able to use it if everything goes smoothly 🙂
+
+We have prepared 9 test cases for you!
+For instance, you can run them by command:
+					
+	make run_case0
+1. case 0
+//graph
+2. case 1
+//graph
+
 	
