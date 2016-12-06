@@ -31,10 +31,10 @@ Great question! In simple words, it is about finding a set of shortest possible 
 ##### What does these words mean ?
 
 
-#### 1. Connected: 
-Recall from what you have learnt in COMP2120😀, a connected graph is a graph in which you can find a path between **any** two vertices. 
+#### 1. "Connected"
+Recall from what you have learnt in COMP2121😀, a connected graph is a graph in which you can find a path between **any** two vertices. 
 
-##### connected exapmle:
+##### Examples
 <img src="resources/connected_graph.png" width="35%" style="float :left">
 <img src="resources/not_connected_graph.png" width="33%" style = "float : right">
 **On the left**
@@ -47,15 +47,15 @@ is an example of connected graph since you can find a path  between any two vert
 **On the right** is **not** a connected graph as *3* is not connected to other parts of the graph. For instance, there is no path between *3* and *2*.
  <br /> <br /> <br /> <br /> <br /> 
 
-####  2. Edge-Weighted: 
-Recall from what you have learnt in COMP2120😀, edge-weghted means that there is a numerical value for the weight of each edge.
+####  2. "Edge-Weighted"
+Recall from what you have learnt in COMP2121😀, edge-weighted means that there is a numerical value for the weight of each edge.
 
-####  3. Undirected: 
-Recall from what you have learnt in COMP2120😀, all edges in the graph indicate a two-way relationship which means they can be travesed in two directions. 
+####  3. "Undirected"
+Recall from what you have learnt in COMP2121😀, all edges in the graph indicate a two-way relationship which means they can be travesed in two directions. 
 
 ## Great! Now you know what context we are in, let's move on to see what we are looking for ---- a Minimum-Spanning-Tree!
 ### What is a tree?
-Recall from what you have learnt in COMP2120😀, tree is a connected graph with no circle.
+Recall from what you have learnt in COMP2121😀, tree is a connected graph with no circle.
 
 
 ### What is a Spanning-Tree in a graph?
@@ -73,14 +73,14 @@ And that’s it!
 Great question again, then here comes our main guest today - **Prim’s Algorithm**!
 
 ## What is Prim’s Algorithm About?
-##### In simple words, Prim's Algorimth can help us find the Minimum-Spanning-Tree we mentioned above.
+##### In simple words, Prim's Algorithm can help us find the Minimum-Spanning-Tree we mentioned above.
 
 
 #### The algorithm may be described in following steps:
 
 
 
-1. Initialise a tree with an arbitrary node in the graph
+1. Initialize a tree with an arbitrary node in the graph
 
 2. Find a node not yet in the tree that can be connected to existing tree with the minimum weight edge and add it to the tree.
 3. Repeat step 2 until all the nodes are in the tree
@@ -98,7 +98,7 @@ Great question again, then here comes our main guest today - **Prim’s Algorith
 
 
 ### Your Trusty Data Structure - Graph
-How can we do this in C++? First we need to have  a data structure for modeling a *graph*. As this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! *It uses `template` in implementation for the purpose of a more generic usage, which could make some function calling a little bit diffrent from things you already know.* 
+How can we do this in C++? First we need to have  a data structure for modeling a *graph*. As this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! *It uses `template` in implementation for the purpose of a more generic usage, which could make some function calling a little bit different from things you already know.* 
 
 For today, we will use vertices of type `double` and weight of type `int` and you only need to know our `Graph.h` contains methods that you could make use of in following way when implementing our algorithm:
 
@@ -147,7 +147,7 @@ And now you are equipped with our weapon and shield, we can finally go on our co
 		
 		gedit Prim.cpp
 
-- We need input and ouput, an provied implementation of graph and string for type specification in later stage, so please add following statements in `Prim.cpp`
+- We need input and output, an provided implementation of graph and string for type specification in later stage, so please add following statements in `Prim.cpp`
 		
 		#include <iostream>
 		#include <string>
@@ -176,11 +176,11 @@ Two arguments here are the graph we want to find our Minimum-Spanning Tree in an
 ####   Here come three important arrays
 1. We need an array (with size of number of vertices) to store each index's **cheapest connection** (the connection that uses lowest weighted edge possible) to the existing tree. 
 
-	*The `i th` entry in this array stores the lowest cost vertex `i` can be connected to the existing tree.*
+	*The `i-th` entry in this array stores the lowest cost vertex `i` can be connected to the existing tree.*
 	
-	Think 😆 What value should they be initialised to when all of them are not in the tree?🤔
+	Think 😆 What value should they be initialized to when all of them are not in the tree?🤔
 	
-	Yes, they should be initialised to the largest `int` possible to indicate their disconnectivity.
+	Yes, they should be initialized to the largest `int` possible to indicate we have not been there yet.
 	
 	Now, let's include them to our code.
 	
@@ -193,14 +193,14 @@ Two arguments here are the graph we want to find our Minimum-Spanning Tree in an
     	
 2. We also need an array to record which vertex this cheapest connection connect to to keep track of edges we want to add to the tree. 
 
-	The `i th` entry of this array will store an `int`
-	indicating the **index of the vertex** of `i th` vertex's cheapest connection target.
+	The `i-th` entry of this array will store an `int`
+	indicating the **index of the vertex** of `i-th` vertex's cheapest connection target.
 	 
-	Think 😆 How could we feature a disconnectivity in terms of index?🤔
+	Think 😆 How could we denote that we have not explored a vertex in terms of index?🤔
 
-	Correct! Let's use -1 (or basically any negative integer) to repesent a disconnectivity.
+	Correct! Let's use -1 (or basically any negative integer) to represent it.
 
-	Now let's incldue this idea into our code.
+	Now let's implement this.
 	
 		int* source_of_cheapest_connection_to = new int[g.getNumOfVertex()];
     
@@ -248,13 +248,13 @@ Now we can add the following code to iterate through the array `cost_of_cheapest
 	int cheapest_vertex_cost = 0x7fffffff;
 	for (int i = 0; i < g.getNumOfVertex(); ++i){
         
-        //a comprasion and resulting action need to be added
+        //a comparison and resulting action need to be added
         
     }
     
 In side the for loop, what comparison we need to make?🤔
 
-Recall that we need to find the cheapest yet unvisited vertex, so that's the two criteria in the comarison.💡
+Recall that we need to find the cheapest yet unvisited vertex, so that's the two criteria in the comparison.💡
 
 
 	if (cost_of_cheapest_connection_to[i] <= cheapest_vertex_cost && visited[i] ==  false){
@@ -292,7 +292,7 @@ It's simple to do this, isn't it? Guess you are ready to add the following to yo
 
 This step is a little bit more complicated, but I believe we can make it together🙂
 
-In this step, basically what we need to do is to update two arrays. Recall that `cost_of_cheapest_connection_to` stores the cheapest cost to connect to the tree and `source_of_cheapest_connection_to` storse the corresponding vertex to connect to. 
+In this step, basically what we need to do is to update two arrays. Recall that `cost_of_cheapest_connection_to` stores the cheapest cost to connect to the tree and `source_of_cheapest_connection_to` stores the corresponding vertex to connect to. 
 
 Then, after we add a vertex to the tree, some of these values might change as the newly added vertex could provide a **cheaper** connection (or make it possible for some vertex to connection).
 
@@ -361,7 +361,7 @@ Buuuuuut, 😌 one more thing to consider......How could we determine the first 
 
 Think about the how we choose the vertex to add in the first step in while loop. Do you find something?😊
 
-Cool, the answer is to set value corresponds to `root` in `cost_of_cheapest_connection_to` to be 0. Then in the first iteration of while loop, it will be recogonized as the cheapest connection and be added to the tree!
+Cool, the answer is to set value corresponds to `root` in `cost_of_cheapest_connection_to` to be 0. Then in the first iteration of while loop, it will be recognized as the cheapest connection and be added to the tree!
 
 What you need to do is simply to add 
 	
