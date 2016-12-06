@@ -35,8 +35,8 @@ Great question! In simple words, it is about finding a set of shortest possible 
 Recall from what you have learnt in COMP2121😀, a connected graph is a graph in which you can find a path between **any** two vertices. 
 
 ##### Examples
-<img src="resources/connected_graph.png" width="35%" style="float :left">
-<img src="resources/not_connected_graph.png" width="33%" style = "float : right">
+<img src="https://vvvfo.github.io/COMP2123_report_resources/connected_graph.png" width="35%" style="float :left">
+<img src="https://vvvfo.github.io/COMP2123_report_resources/not_connected_graph.png" width="33%" style = "float : right">
 **On the left**
 is an example of connected graph since you can find a path  between any two vertices.
 
@@ -62,7 +62,7 @@ Recall from what you have learnt in COMP2121😀, tree is a connected graph with
 We call a tree a Spanning-Tree of graph g if and only if the tree spans (in other words includes) all the vertices in that graph.
 
 ### What is a Minimum-Spanning-Tree in a graph?
-<img src="resources/mst_1.png" width="30%" style="float :left">
+<img src="https://vvvfo.github.io/COMP2123_report_resources/mst_1.png" width="30%" style="float :left">
 
 A Minimum-Spanning-Tree is a spanning tree with ***minimum*** total weight among all spanning tree. **This is what we are looking for!😃**
 <br /><br /><br /><br />
@@ -85,14 +85,7 @@ Great question again, then here comes our main guest today - **Prim’s Algorith
 2. Find a node not yet in the tree that can be connected to existing tree with the minimum weight edge and add it to the tree.
 3. Repeat step 2 until all the nodes are in the tree
 
-<img src="resources/d1.png" width="20%"> --> 
-<img src="resources/d2.png" width="19.8%"> -->
-<img src="resources/d3.png" width="20%" > -->
-<img src="resources/d4.png" width="19.4%">-->
-<img src="resources/d5.png" width="20%"> --> 
-<img src="resources/d6.png" width="19.8%" > -->
-<img src="resources/d7.png" width="19.9%" > -->
-<img src="resources/d8.png" width="19.9%" >
+<img src="https://vvvfo.github.io/COMP2123_report_resources/d1.png" width="20%"> --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d2.png" width="19.8%"> --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d3.png" width="20%" > --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d4.png" width="19.4%">--> <img src="https://vvvfo.github.io/COMP2123_report_resources/d5.png" width="20%"> -->  <img src="https://vvvfo.github.io/COMP2123_report_resources/d6.png" width="19.8%" > --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d7.png" width="19.9%" > --> <img src="https://vvvfo.github.io/COMP2123_report_resources/d8.png" width="19.9%" >
 
 
 
