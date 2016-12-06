@@ -23,7 +23,7 @@ Great question! In simple words, it is about finding a set of shortest possible 
 ### First thing: we are going to study the problem in this kind of graph …
 
 > Connected
-> 
+>
 > Edge-Weighted
 > 
 > Undirected
@@ -96,39 +96,39 @@ How can we do this in C++? First we need to have  a data structure for modeling 
 
 For today, we will use vertices of type `double` and weight of type `int` and you only need to know our `Graph.h` contains methods that you could make use of in following way when implementing our algorithm:
 
-- `Graph<double>(false)` 
+#### `Graph<double>(false)` 
 
 Construct a **undirected graph object** with vertices of type `double`.
 
-- `double getVertex(int index)`
+#### `double getVertex(int index)`
 
 Return the **vertex** corresponds to a index.
 
-- `int getIndex(double vertex)`
+#### `int getIndex(double vertex)`
 
 Return the **index** corresponds to a vertex.
 
-- `int getNumOfVertex()`
+#### `int getNumOfVertex()`
 
 Return the **number** of vertices.
 
-- `void addVertex(double vertex)`
+#### `void addVertex(double vertex)`
 
 Add a **vertex** to the graph.
 
-- `void addEdge(double v1, double v2, int w)`
+#### `void addEdge(double v1, double v2, int w)`
 
-Add an **edge** connecting v1 to v2 with weight w.
+Add an **edge** connecting `v1` to `v2` with weight `w`.
 
-- `int getEdge(double v1, double v2)`
+#### `int getEdge(double v1, double v2)`
 
-Return the **weight** of edge connecting v1 to v2.
+Return the **weight** of edge connecting `v1` to `v2`.
  
-- `vector<double> getAllAdjacentVertex(double vertex)`
+#### `vector<double> getAllAdjacentVertex(double vertex)`
 
-Return a vector of all the vertices(vertex) adjacent to a vertex.
+Return a vector of all the vertices adjacent to a vertex.
 
-- `bool contain(vertex)`
+#### `bool contain(vertex)`
 
 Return whether a graph contains a vertex.
 
@@ -149,13 +149,11 @@ And now you are equipped with our weapon and shield, we can finally go on our co
 	
 ### Let's implement this algorithm!🤗
 - First, let's include the skeleton!
-		
-		Graph<double> prim(Graph<double> g, int root){
-		
+```
+Graph<double> prim(Graph<double> g, int root){
 		//All your code in this section find their way here😊
-		
-		}		
-		
+}		
+```
 The return type should be a graph with double as vertices, same as the original graph. 
 
 Two arguments here are the graph we want to find our Minimum-Spanning Tree in and the arbitrary root we asign to start with.
