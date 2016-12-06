@@ -29,11 +29,11 @@ Recall from what you have learnt in COMP2121😀, a connected graph is a graph i
 
 **On the right** is **not** a connected graph as *3* is not connected to other parts of the graph. For instance, there is no path between *3* and *2*.
 
-####  2. "Edge-Weighted"
+#### 2. "Edge-Weighted"
 Still, from COMP2121, edge-weighted means that there is a numerical value for the weight of each edge.
 
-####  3. "Undirected"
-Once again from COMP2121, all edges in the graph indicate a two-way relationship which means they can be travesed in two directions. 
+#### 3. "Undirected"
+Once again from COMP2121, all edges in the graph indicate a two-way relationship which means they can be traversed in two directions. 
 
 ## Great! Now you know what context we are in, let's move on to see what we are looking for ---- a Minimum-Spanning-Tree!
 ### What is a tree?
@@ -55,18 +55,15 @@ Great question again, then here comes our main guest today - **Prim’s Algorith
 
  **In simple words, Prim's Algorithm can help us find the Minimum-Spanning-Tree we mentioned above.**
 
-
 *The algorithm may be described in following steps:*
 
-1. Initialize a tree with an arbitrary node in the graph
-2. Find a node not yet in the tree that can be connected to existing tree with the minimum weight edge and add it to the tree.
+1. Initialize a tree with an arbitrary node in the graph (①)
+2. Find a node not yet in the tree that can be connected to existing tree with the minimum weight edge and add it to the tree. (②③)
 3. Repeat step 2 until all the nodes are in the tree
 
 ① <img src="https://vvvfo.github.io/COMP2123_report_resources/d1.png" width="20%"> ② <img src="https://vvvfo.github.io/COMP2123_report_resources/d2.png" width="19.8%"> ③ <img src="https://vvvfo.github.io/COMP2123_report_resources/d3.png" width="20%" > ④ <img src="https://vvvfo.github.io/COMP2123_report_resources/d4.png" width="19.4%">
 
 ⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/d5.png" width="20%"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/d6.png" width="19.8%" > ⑦ <img src="https://vvvfo.github.io/COMP2123_report_resources/d7.png" width="19.9%" > ⑧<img src="https://vvvfo.github.io/COMP2123_report_resources/d8.png" width="19.9%" >
-
-
 
 
 ### Your Trusty Data Structure - Graph
@@ -131,9 +128,11 @@ The return type should be a graph with double as vertices, same as the original 
 
 Two arguments here are 1. the graph we want to find our Minimum-Spanning Tree in and 2. the arbitrary root that we would want to begin with.
 
-- Now, let's create an empty graph `minimum_spanning_tree ` for storing what we have added.
-     
-     	Graph<double> minimum_spanning_tree(false);
+- Now, let's create an empty graph `minimum_spanning_tree` for storing what we have added.
+
+```
+Graph<double> minimum_spanning_tree(false);
+```
 
 **Note:** the false here is for creating an undirected graph (you can refer to the Graph.h provided for implementation details)
     
@@ -193,7 +192,7 @@ Yeah, I know you can recall that the iteration should not stop until all nodes a
 
 Now, we what we need to do in the iteration can be divided into 3 steps 😃
 
-##### Step 1 in iteration: Finding the UNVISITED Vertex with the Lowest Cost of Connection To
+#### Step 1 in iteration: Finding the UNVISITED Vertex with the Lowest Cost of Connection To
 We could use two `int` to record the cheapest cost and the corresponding index respectively.😀
 
 Now we can add the following code to iterate through the array `cost_of_cheapest_connection_to` to find the cheapest connection.
@@ -235,17 +234,17 @@ if (root != cheapest_vertex_index) {
  
  **Note : we have to perform a checking before adding an edge because the first node we add to the tree does not have anything to connect to.**
  
- Then, what left in this step is just to set the corresponding entry in the visited vector to be true.
+Then, what left in this step is just to set the corresponding entry in the visited vector to be true.
 ``` 		
 visited[cheapest_vertex_index] = true;
 ```
 
-**Hang on, bro! You are almost there!💪🏽**
+***Hang in there! You are almost there!💪🏽***
 
 ####  Step 3: Update `cost_of_cheapest_connection_to` and `source_of_cheapest_connection_to` after a New Vertex is Added to the Tree
 This step is a little bit more complicated, but I believe we can make it together🙂
 
-In this step, basically what we need to do is to update two arrays. Recall that `cost_of_cheapest_connection_to` stores the cheapest cost to connect to the tree and `source_of_cheapest_connection_to` stores the corresponding vertex to connect to. 
+In this step, basically what we need to do is to update two arrays. Recall that: `cost_of_cheapest_connection_to` stores the cheapest cost to connect to the tree and `source_of_cheapest_connection_to` stores the corresponding vertex to connect to. 
 
 Then, after we add a vertex to the tree, some of these values might change as the newly added vertex could provide a **cheaper** connection (or make it possible for some vertex to connection).
 
@@ -277,11 +276,14 @@ if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_inde
 ```
  - ② If the vertex satisfies condition above, we can move on to check if it **does** have a cheaper connection and update the two arrays if it's really the case.
 
-Get the weight of edge connecting this vertex and the newly added one.		
+Get the weight of edge connecting this vertex and the newly added one.
+
 ```
 int cost = g.getEdge(g.getVertex(cheapest_vertex_index), *it);
 ```
+
 If `cost` is less than its original cheapest cost, update two corresponding values in the arrays.
+
 ```
 if (cost <= cost_of_cheapest_connection_to[g.getIndex(*it)]) {
 	cost_of_cheapest_connection_to[g.getIndex(*it)] = cost;
@@ -289,11 +291,11 @@ if (cost <= cost_of_cheapest_connection_to[g.getIndex(*it)]) {
 }
 ```
 
-Wow, a lot happen in this step right? Don't worry, let's check if you got everything correct. Here are the code in **Step 3** should look like🙂
+Well, so many things happen in this step! I know right? Don't worry, let's check if you got everything correct. Here are what the code in **Step 3** should look like🙂
+
 ```
 vector<double> all_adjacencies = g.getAllAdjacentVertex(g.getVertex(cheapest_vertex_index));
 for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencies.end(); it++) {
-
 	if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_index)
 	{
 		int cost = g.getEdge(g.getVertex(cheapest_vertex_index), *it);
@@ -304,21 +306,22 @@ for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencie
 		}
 	}
 }
-```   
-#####  Congratulations ! That's Everything About The While Loop
+```
+ 
+##### Congratulations ! That's Everything About The While Loop
 We can return `minimum_spanning_tree` after the while loop and the implementation is done!
 
 Buuuuuut, 😌 one more thing to consider......How could we determine the first node to be added to be `root` as we promised in the declaration? This is a tricky question🤔
 
 Think about the how we choose the vertex to add in the first step in while loop. Do you find something?😊
 
-Cool, the answer is to set value corresponds to `root` in `cost_of_cheapest_connection_to` to be 0. Then in the first iteration of while loop, it will be recognized as the cheapest connection and be added to the tree!
+Cool, the answer is to set value corresponds to `root` in `cost_of_cheapest_connection_to` to be `0`. Then in the first iteration of while loop, it will be recognized as the cheapest connection and be added to the tree!
 
 What you need to do is simply to add 
 	
 	 cost_of_cheapest_connection_to[root] = 0;
 	
-before while loop.
+Before while loop.
 
 ##### Great! Congratulation! You have finished implement this algorithm! 
 Can't wait to try if it works? We have provided the main method for you to test your code!☺️
