@@ -20,7 +20,7 @@ Wow that’s quite a lot of information and really not that simple I admit, but 
 
 ### First, What Does These Fancy Words Mean?
 #### 1. "Connected"
-Recall from what you have learnt in COMP2121😀, a connected graph is a graph in which you can find a path between **any** two vertices. 
+Recall from what you have learnt in COMP2121😀, a connected graph is a graph in which you can find a path between **any** two vertices.
 
 ##### Examples
 <img src="https://vvvfo.github.io/COMP2123_report_resources/connected_graph.png" width="40%" style="float :center"> <img src="https://vvvfo.github.io/COMP2123_report_resources/not_connected_graph.png" width="38%" style="float :right">
@@ -33,7 +33,7 @@ Recall from what you have learnt in COMP2121😀, a connected graph is a graph i
 Still, from COMP2121, edge-weighted means that there is a numerical value for the weight of each edge.
 
 #### 3. "Undirected"
-Once again from COMP2121, all edges in the graph indicate a two-way relationship which means they can be traversed in two directions. 
+Once again from COMP2121, all edges in the graph indicate a two-way relationship which means they can be traversed in two directions.
 
 ## Great! Now you know what context we are in, let's move on to see what we are looking for ---- a Minimum-Spanning-Tree!
 ### What is a tree?
@@ -67,11 +67,11 @@ Great question again, then here comes our main guest today - **Prim’s Algorith
 
 
 ### Your Trusty Data Structure - Graph
-How can we do this in C++? First we need to have  a data structure for modeling a *graph*. As this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! *It uses `template` in implementation for the purpose of a more generic usage, which could make some function calling a little bit different from things you already know.* 
+How can we do this in C++? First we need to have  a data structure for modeling a *graph*. As this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! *It uses `template` in implementation for the purpose of a more generic usage, which could make some function calling a little bit different from things you already know.*
 
 For today, we will use vertices of type `double` and weight of type `int` and you only need to know our `Graph.h` contains methods that you could make use of in following way when implementing our algorithm:
 
-#### `Graph<double>(false)` 
+#### `Graph<double>(false)`
 
 Construct a **undirected graph object** with vertices of type `double`.
 
@@ -98,7 +98,7 @@ Add an **edge** connecting `v1` to `v2` with weight `w`.
 #### `int getEdge(double v1, double v2)`
 
 Return the **weight** of edge connecting `v1` to `v2`.
- 
+
 #### `vector<double> getAllAdjacentVertex(double vertex)`
 
 Return a vector of all the vertices adjacent to a vertex.
@@ -108,23 +108,24 @@ Return a vector of all the vertices adjacent to a vertex.
 Return whether a graph contains a vertex.
 
 ### You are good to go!🙂
- 
+
 And now you are equipped with our weapon and shield, we can finally go on our conquest to find our *Minimum-Spanning-Tree*!
 
 ## Let’s Do It!🤗
-- First, you need to open the existing file `Prim.cpp`. 
+- First, you need to open the existing file `Prim.cpp`.
 
 ```		
 gedit Prim.cpp
 ```
-	
+
 ### Let's implement this algorithm!🤗
 - First, let's see the skeleton of our algorithm
-
-		Graph<double> prim(Graph<double> g, int root){
-			//All your code in this implementation find their way here😊
-		}		
-The return type should be a graph with double as vertices, same as the original graph. 
+```
+Graph<double> prim(Graph<double> g, int root){
+	//All your code in this implementation find their way here😊
+}
+```
+The return type should be a graph with double as vertices, same as the original graph.
 
 Two arguments here are  : 1. the graph we want to find our Minimum-Spanning Tree in and, 2.  the arbitrary root that we would want to begin with.
 
@@ -135,8 +136,8 @@ Graph<double> minimum_spanning_tree(false);
 ```
 
 **Note:** the false here is for creating an undirected graph (you can refer to the Graph.h provided for implementation details)
-    
-    
+
+
 #### Three Important Arrays / Vectors for Your Quality of Life
 - **First**: We need an array (with size of number of vertices) to store each index's **cheapest connection** (the connection that uses lowest weighted edge possible) to the existing tree.
 	- *The `i-th` entry in this array stores the lowest cost vertex `i` can be connected to the existing tree.*
@@ -146,7 +147,7 @@ Graph<double> minimum_spanning_tree(false);
 
 ```
 int* cost_of_cheapest_connection_to = new int[g.getNumOfVertex()];
-   
+
 for (int i = 0; i < g.getNumOfVertex(); ++i){
     cost_of_cheapest_connection_to[i] = 0x7fffffff;
 }
@@ -176,7 +177,7 @@ for (int i = 0; i < g.getNumOfVertex(); ++i){
 ```
 vector<bool> visited;
 visited.resize(g.getNumOfVertex(), false);
-``` 
+```
 
 **Keep these three arrays in mind cause they are the keys to this problem!😉**
 ##  The iteration should begin!
@@ -184,7 +185,7 @@ Now, we could start the iteration to build the tree!
 
 - A while loop would be a good choice in this case 😀.
 ```
-while(minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()){ 
+while(minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()){
  	//All the code in the iteration go to here
 }
 ```
@@ -219,9 +220,9 @@ if (cost_of_cheapest_connection_to[i] <= cheapest_vertex_cost && visited[i] ==  
 ```
 
 After finding that vertex, Guess what comes next?😜
- 
+
 Bingo!
- 
+
 ####  Step 2: Add the Vertex to Our Tree and Set it To be Visited
 Now it’s time to scroll back to where functions in Graph.h is introduced cause we need to use it now. Take your time~ I will be waiting here😊
 
@@ -233,9 +234,9 @@ if (root != cheapest_vertex_index) {
 	minimum_spanning_tree.addEdge(g.getVertex(cheapest_vertex_index),g.getVertex(source_of_cheapest_connection_to[cheapest_vertex_index]), cheapest_vertex_cost);
 }
 ```
- 
+
  **Note : we have to perform a checking before adding an edge because the first node we add to the tree does not have anything to connect to.**
- 
+
 Then, what left in this step is just to set the corresponding entry in the visited vector to be true.
 ``` 		
 visited[cheapest_vertex_index] = true;
@@ -246,7 +247,7 @@ visited[cheapest_vertex_index] = true;
 ####  Step 3: Update `cost_of_cheapest_connection_to` and `source_of_cheapest_connection_to` after a New Vertex is Added to the Tree
 This step is a little bit more complicated, but I believe we can make it together🙂
 
-In this step, basically what we need to do is to update two arrays. Recall that: `cost_of_cheapest_connection_to` stores the cheapest cost to connect to the tree and `source_of_cheapest_connection_to` stores the corresponding vertex to connect to. 
+In this step, basically what we need to do is to update two arrays. Recall that: `cost_of_cheapest_connection_to` stores the cheapest cost to connect to the tree and `source_of_cheapest_connection_to` stores the corresponding vertex to connect to.
 
 Then, after we add a vertex to the tree, some of these values might change as the newly added vertex could provide a **cheaper** connection (or make it possible for some vertex to connection).
 
@@ -270,7 +271,7 @@ for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencie
 }
 ```
 
- - ① Remember only vertices that haven't been visited before should be checked 
+ - ① Remember only vertices that haven't been visited before should be checked
 ```
 if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_index) {
 	//code in following step should be added here
@@ -309,7 +310,7 @@ for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencie
 	}
 }
 ```
- 
+
 ##### Congratulations ! That's Everything About The While Loop
 We can return `minimum_spanning_tree` after the while loop and the implementation is done!
 
@@ -319,13 +320,13 @@ Think about the how we choose the vertex to add in the first step in while loop.
 
 💡Cool, the answer is to set value corresponds to `root` in `cost_of_cheapest_connection_to` to be `0`. Then in the first iteration of while loop, it will be recognized as the cheapest connection and be added to the tree!
 
-What you need to do is simply to add 
-	
+What you need to do is simply to add
+
 	 cost_of_cheapest_connection_to[root] = 0;
-	
+
 **Before** the while loop.
 
-##### Great! Congratulation! You have finished implement this algorithm! 
+##### Great! Congratulation! You have finished implement this algorithm!
 Can't wait to try if it works? We have provided the main method for you to test your code!☺️
 Now you should be able to use it if everything goes smoothly 🙂
 
@@ -335,7 +336,7 @@ For instance, you can run them by command:
 make run_case0
 ```
 1.case0
-<img src="https://vvvfo.github.io/COMP2123_report_resources/t0.png" width="40%"> 
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t0.png" width="40%">
 
 😊You can run this test case by type in:
 ```
@@ -376,7 +377,7 @@ make run_case5
 ```
 7.case6
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t6.png" width="80%">
-  
+
 😊You can run this test case by type in:
 ```
 make run_case6
