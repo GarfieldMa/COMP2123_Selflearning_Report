@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 #define MAX 0X7ffffff
@@ -30,6 +31,7 @@ public:
     void deleteEdge( const VertexType& v1, VertexType& v2 );
     int getEdge( const VertexType& v1, const VertexType& v2 ) const;
     Graph<VertexType> prim(Graph<VertexType> g, int root);
+    template <typename T> friend ostream& operator << ( ostream& , const Graph<T>& );
 
 private:
     vector<VertexType> vertices; //indexing vertex
@@ -304,6 +306,34 @@ Graph<VertexType> prim(Graph<VertexType> g, int root){
     }
 
     return minimum_spanning_tree;
+}
+
+template <typename T>
+ostream& operator << ( ostream& cout, const Graph<T>& g ){
+	cout << setw( 8 ) << "vertices";
+	vector<T> vec_tmp = g.vertices;
+	sort( vec_tmp.begin(), vec_tmp.end() );
+	for ( int i = 0; i < g.getNumOfVertex(); i++  ){
+    		cout << setw( 8 ) << vec_tmp.at( i );
+    }
+    cout << endl;
+
+    int sum_edge = 0;
+    for ( int i = 0; i < g.getNumOfVertex(); i++  ){
+		    cout << setw( 8 ) << vec_tmp.at( i );
+    		for ( int j = 0; j < g.getNumOfVertex(); j++){
+    			if ( g.adjacentCheck( vec_tmp.at( i ), vec_tmp.at( j ) ) ){
+    				cout << setw( 8 ) << '*';
+    				sum_edge += g.getEdge( vec_tmp.at( i ), vec_tmp.at( j ) );
+    			}
+    			else{
+    				cout << setw( 8 ) << ' ';
+    			}
+    		}
+		cout << endl;
+	}
+	cout << "Sum of edges' weight: " << sum_edge << endl;
+	return cout;
 }
 
 #endif

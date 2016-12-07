@@ -35,33 +35,34 @@ int main(){
     //Use this loop to show the resulting MST
 
 cout<<"***********Minimum_Spanning_Tree*************"<<endl;
-    cout << setw( 8 ) << "vertices";
-    	for ( int i = 0; i < MST.getNumOfVertex(); i++  ){
-    		cout << setw( 8 ) << MST.getVertex( i );
-    	}
-    	cout << endl;
-    for ( int i = 0; i < MST.getNumOfVertex(); i++  ){
-		    cout << setw( 8 ) << MST.getVertex( i );
-    		for ( int j = 0; j < MST.getNumOfVertex(); j++){
-    			cout << setw( 8 ) << ( MST.adjacentCheck( MST.getVertex( i ), MST.getVertex( j ) ) ? '*' : ' ');
-    		}
-		cout << endl;
-	}
+    cout << MST;
+ //    cout << setw( 8 ) << "vertices";
+ //    for ( int i = 0; i < MST.getNumOfVertex(); i++  ){
+ //    		cout << setw( 8 ) << MST.getVertex( i );
+ //    	}
+ //    	cout << endl;
+ //    for ( int i = 0; i < MST.getNumOfVertex(); i++  ){
+	// 	    cout << setw( 8 ) << MST.getVertex( i );
+ //    		for ( int j = 0; j < MST.getNumOfVertex(); j++){
+ //    			cout << setw( 8 ) << ( MST.adjacentCheck( MST.getVertex( i ), MST.getVertex( j ) ) ? '*' : ' ');
+ //    		}
+	// 	cout << endl;
+	// }
 
 
     cout << "***********original graph*************" << endl;
-
-    cout << setw( 8 ) << "vertices";
-      for ( int i = 0; i < g.getNumOfVertex(); i++  ){
-        cout << setw( 8 ) << g.getVertex(i);
-      }
-      cout << endl;
-    for ( int i = 0; i < g.getNumOfVertex(); i++  ){
-        cout << setw( 8 ) << g.getVertex(i);
-        for ( int j = 0; j < g.getNumOfVertex(); j++){
-          cout << setw( 8 ) << ( g.adjacentCheck( g.getVertex(i), g.getVertex(j) ) ? '*' : ' ');
-        }
-    cout << endl;
-    }
+    cout << g;
+    // cout << setw( 8 ) << "vertices";
+    //   for ( int i = 0; i < g.getNumOfVertex(); i++  ){
+    //     cout << setw( 8 ) << g.getVertex(i);
+    //   }
+    //   cout << endl;
+    // for ( int i = 0; i < g.getNumOfVertex(); i++  ){
+    //     cout << setw( 8 ) << g.getVertex(i);
+    //     for ( int j = 0; j < g.getNumOfVertex(); j++){
+    //       cout << setw( 8 ) << ( g.adjacentCheck( g.getVertex(i), g.getVertex(j) ) ? '*' : ' ');
+    //     }
+    // cout << endl;
+    // }
 
 }
