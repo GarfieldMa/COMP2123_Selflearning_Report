@@ -2,7 +2,6 @@
 #define GRAPH_H
 
 #include <iostream>
-#include <list>
 #include <vector>
 
 #define MAX 0X7ffffff
@@ -31,6 +30,7 @@ public:
     void deleteEdge( const VertexType& v1, VertexType& v2 );
     int getEdge( const VertexType& v1, const VertexType& v2 ) const;
     Graph<VertexType> prim(Graph<VertexType> g, int root);
+
 private:
     vector<VertexType> vertices; //indexing vertex
     vector<vector<int> > adjMatrix;
