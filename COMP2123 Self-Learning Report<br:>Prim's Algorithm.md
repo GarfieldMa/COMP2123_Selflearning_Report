@@ -48,8 +48,12 @@ We call a tree a Spanning-Tree of graph `g` if and only if the tree spans (in ot
 A Minimum-Spanning-Tree is a spanning tree with ***minimum*** total weight among all spanning tree. **This is what we are looking for!😃**
 
 And that’s it!
-*”But how do we find that though?”*
-Great question again, then here comes our main guest today - **Prim’s Algorithm**!
+
+*"But why do we need want to find that though?"*
+Minimum-Spanning-Tree problem has many applications in the design of *networks*, and a real life example would be laying cable to a new neighborhood and we would want to minimize our cost.
+
+*”Hmm… That sounds interesting, so how do we find it?”*
+That what we are going to learn today! Let welcome our special guest today - **Prim’s Algorithm**!
 
 ## What is Prim’s Algorithm About?
 
@@ -172,7 +176,7 @@ for (int i = 0; i < g.getNumOfVertex(); ++i){
 }
 ```
 
-- **Third:** we need one more array to record whether this node is already in the tree.
+- **Third:** we need yet another array to record whether this node is already in our tree (we don't want to add the same vertex over and over again right?)
 	- A vector of `bool` can do the job right?
 	- And what should their initial value be when no node is in the tree? 🙈
 	- The answer is - `false`!
@@ -182,11 +186,12 @@ for (int i = 0; i < g.getNumOfVertex(); ++i){
 vector<bool> visited;
 visited.resize(g.getNumOfVertex(), false);
 ```
+Or an simple array would do the job (remember to initialize it though).
 
 **Keep these three arrays in mind cause they are the keys to this problem!😉**
 
-##  The iteration should begin!
-Now, we could start the iteration to build the tree!
+## Let the Iteration Begin!
+Now, we could start the iteration to build up our tree!
 
 - A while loop would be a good choice in this case 😀.
 
@@ -231,7 +236,7 @@ After finding that vertex, Guess what comes next?😜
 Bingo!
 
 ####  Step 2: Add the Vertex to Our Tree and Set it To be Visited
-Now it is time to scroll back to where functions in Graph.h is introduced cause we need to use it now. Take your time~ I will be waiting here🤗
+Now it is time to scroll back to where functions in `Graph.h` is introduced cause we need to use it now. Take your time~ I will be waiting here🤗
 
 Simple, isn't it? Ready for the code?😀
 
@@ -242,16 +247,17 @@ if (root != cheapest_vertex_index) {
 }
 ```
 
-**Note : we have to perform a checking before adding an edge because the first node we add to the tree does not have anything to connect to.**
+**Note: we have to perform a checking before adding an edge because the first node we add to the tree does not have anything to connect to.**
 
-Then, what left in this step is just to set the corresponding entry in the visited vector to be true.
+Then, just set the corresponding entry in the visited vector to be `true` (to represent we have visited this vertex already).
+
 ``` 		
 visited[cheapest_vertex_index] = true;
 ```
 
 ***Hang in there! You are almost there!💪🏽***
 
-####  Step 3: Update `cost_of_cheapest_connection_to` and `source_of_cheapest_connection_to` after a New Vertex is Added to the Tree
+#### Step 3: Update `cost_of_cheapest_connection_to` and `source_of_cheapest_connection_to` after a New Vertex is Added to the Tree
 This step is a little bit more complicated, but I believe we can make it together🙂
 
 In this step, basically what we need to do is to update two arrays. Recall that: `cost_of_cheapest_connection_to` stores the cheapest cost to connect to the tree and `source_of_cheapest_connection_to` stores the corresponding vertex to connect to.
@@ -280,7 +286,7 @@ for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencie
 }
 ```
 
- - ① Remember only vertices that haven't been visited before should be checked
+ - ① Remember we should only check unvisited vertices
 
 ```
 if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_index) {
@@ -325,7 +331,7 @@ for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencie
 ##### Congratulations ! That's Everything About The While Loop
 We can return `minimum_spanning_tree` after the while loop and the implementation is done!
 
-Buuuuuut, 😌 one more thing to consider......How could we determine the first node to be added to be `root` as we promised in the declaration? This is a tricky question🤔
+Buuuuuut, 😌 one more thing to consider… How could we determine the first node to be added to be `root` as we promised in the declaration? This is a tricky question🤔
 
 Think about the how we choose the vertex to add in the first step in while loop. Do you find something?😊
 
@@ -333,7 +339,9 @@ Think about the how we choose the vertex to add in the first step in while loop.
 
 What you need to do is simply to add
 
-	 cost_of_cheapest_connection_to[root] = 0;
+```
+cost_of_cheapest_connection_to[root] = 0;
+```
 
 **Before** the while loop.
 
