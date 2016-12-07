@@ -1,0 +1,110 @@
+addVertex 0
+addVertex 1
+addVertex 2
+addVertex 3
+addVertex 4
+addVertex 5
+addVertex 6
+addVertex 7
+addVertex 8
+addVertex 9
+addVertex 10
+addVertex 11
+addVertex 12
+addVertex 13
+addVertex 14
+addVertex 15
+addVertex 16
+addVertex 17
+addVertex 18
+addVertex 19
+addVertex 20
+addVertex 21
+addVertex 22
+addVertex 23
+addVertex 24
+addVertex 25
+addVertex 26
+addVertex 27
+addVertex 28
+addVertex 29
+addVertex 30
+addVertex 31
+addEdge 0 1 1
+addEdge 0 5 1
+addEdge 0 6 2
+addEdge 1 2 1
+addEdge 1 5 2
+addEdge 1 7 2
+addEdge 1 10 2
+addEdge 2 3 1
+addEdge 2 7 1
+addEdge 2 8 2
+addEdge 2 9 2
+addEdge 3 7 2
+addEdge 3 8 1
+addEdge 3 4 1
+addEdge 4 8 1
+addEdge 4 31 6
+addEdge 5 9 2
+addEdge 5 6 1
+addEdge 6 7 1
+addEdge 6 10 2
+addEdge 6 11 1
+addEdge 6 13 2
+addEdge 6 23 4
+addEdge 7 11 2
+addEdge 7 12 2
+addEdge 7 13 2
+addEdge 7 8 1
+addEdge 8 13 2
+addEdge 8 29 5
+addEdge 9 10 1
+addEdge 9 14 1
+addEdge 9 15 1
+addEdge 10 11 2
+addEdge 10 15 1
+addEdge 11 12 1
+addEdge 11 15 2
+addEdge 11 21 2
+addEdge 12 13 1
+addEdge 12 16 2
+addEdge 13 21 2
+addEdge 13 27 3
+addEdge 13 18 1
+addEdge 13 23 2
+addEdge 14 19 1
+addEdge 14 15 1
+addEdge 15 16 1
+addEdge 15 21 2
+addEdge 16 17 1
+addEdge 16 21 1
+addEdge 16 19 2
+addEdge 17 18 1
+addEdge 17 23 2
+addEdge 18 22 1
+addEdge 19 24 1
+addEdge 20 24 1
+addEdge 20 25 1
+addEdge 20 25 1
+addEdge 20 26 2
+addEdge 21 22 1
+addEdge 21 25 2
+addEdge 21 26 1
+addEdge 21 27 2
+addEdge 22 26 2
+addEdge 22 31 2
+addEdge 23 30 2
+addEdge 24 25 1
+addEdge 24 28 1
+addEdge 24 30 2
+addEdge 25 28 2
+addEdge 25 26 1
+addEdge 26 28 2
+addEdge 26 30 1
+addEdge 26 27 1
+addEdge 27 30 2
+addEdge 28 29 1
+addEdge 29 30 1
+addEdge 30 31 2
+runPrim 0

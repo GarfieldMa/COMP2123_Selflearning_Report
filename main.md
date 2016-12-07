@@ -399,5 +399,10 @@ For instance, you can run them by command:
 	  make run_case7
 	  
   9.case8
+  
+   <img src="https://vvvfo.github.io/COMP2123_report_resources/t8.png" width="100%">
 	  
+  😊You can run this test case by type in:
+  
+	  make run_case7
 	  
