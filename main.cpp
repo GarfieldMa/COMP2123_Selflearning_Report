@@ -2,7 +2,7 @@
 #include <iomanip>
 #include <string>
 #include "Graph.h"
-// #include "Prim.h"
+#include "Prim.h"    
 
 int main(){
     //creating a new undirected graph containing our workspace
