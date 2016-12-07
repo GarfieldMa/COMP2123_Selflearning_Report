@@ -74,6 +74,8 @@ int Graph<VertexType>::getIndex( const VertexType& v ) const{
 template <typename VertexType>
 void Graph<VertexType>::addVertex( const VertexType v ){
     try{
+
+    	//check duplicate
         auto it_v = this -> vertices.end();
         for ( auto it = this -> vertices.begin(); it != this -> vertices.end(); it++ ){
             if ( *it == v ){
@@ -81,6 +83,8 @@ void Graph<VertexType>::addVertex( const VertexType v ){
                 break;
             }
         }
+
+        //if no dupicate
         if ( it_v == this -> vertices.end() ){
             this -> vertices.push_back( v );
             num_of_vertex++;
