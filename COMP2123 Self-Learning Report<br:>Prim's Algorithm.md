@@ -122,11 +122,13 @@ Or whatever text editor that you are comfortable with😜.
 
 ### Let's implement this algorithm!🤗
 - First, let's see the skeleton of our algorithm
+
 ```
 Graph<double> prim(Graph<double> g, int root){
 	//All your code in this implementation find their way here😊
 }
 ```
+
 The return type should be a graph with double as vertices, same as the original graph.
 
 Two arguments here are: 1. the graph we want to find our Minimum-Spanning Tree in and, 2. the arbitrary root that we would want to begin with.
@@ -187,11 +189,13 @@ visited.resize(g.getNumOfVertex(), false);
 Now, we could start the iteration to build the tree!
 
 - A while loop would be a good choice in this case 😀.
+
 ```
 while(minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()){
  	//All the code in the iteration go to here
 }
 ```
+
 Can you tell why the condition we set termination condition as `minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()`? 🤔😜
 
 Yeah, I know you can recall that the iteration should not stop until all nodes are added😊
@@ -260,9 +264,11 @@ As vertices that could be affected are those **connected to the newly added vert
 
 ##### Let's Give It a Try!
 **First**, we can get all the adjacent vertices using method from Graph.h
+
 ```
 vector<double> all_adjacencies = g.getAllAdjacentVertex(g.getVertex(cheapest_vertex_index));
 ```
+
 This gives a vector of all vertices adjacent to the newly added one.
 
 **Second**, let's iterate through these vertices to see if update is necessary.
@@ -275,11 +281,13 @@ for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencie
 ```
 
  - ① Remember only vertices that haven't been visited before should be checked
+
 ```
 if (visited[g.getIndex(*it)] == false && g.getIndex(*it) != cheapest_vertex_index) {
 	//code in following step should be added here
 }
 ```
+
  - ② If the vertex satisfies condition above, we can move on to check if it **does** have a cheaper connection and update the two arrays if it's really the case.
 
 Get the weight of edge connecting this vertex and the newly added one.
@@ -333,16 +341,14 @@ What you need to do is simply to add
 Can't wait to try if it works? We have provided the main method for you to test your code!☺️
 Now you should be able to use it if everything goes smoothly 🙂
 
-We have prepared 9 test cases for you!
-For instance, you can run them by command:
-```					
-make run_case0
-```
+We have prepared some test cases for you!
+
 1.case0
 
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t0.png" width="40%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case0
 ```
@@ -355,9 +361,11 @@ The process of your algorithm should look like this if correct🙂
 ⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_4.png" width="40%" style="float :center"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_5.png" width="45%" style="float :center">
 
 2.case1
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t1.png" width="40%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case1
 ```
@@ -369,7 +377,7 @@ make run_case1
 
 ⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_4.png" width="40%" style="float :center"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_5.png" width="40%" style="float :center">
 
-⑦ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_6.png" width="40%" style="float :center"> ⑧ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_7.png" width="40%" style="float :center">
+⑦ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_6.png" width="40%" style="float :center"> ⑧ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_7.png" width="38%" style="float :center">
 
 The process of your algorithm **could** look like this if correct🙂
 
@@ -382,6 +390,7 @@ We have also provide more test cases for you to play with, and the process is hi
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t2.png" width="40%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case2
 ```
@@ -391,6 +400,7 @@ make run_case2
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t3.png" width="50%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case2
 ```
@@ -400,13 +410,17 @@ make run_case2
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t4.png" width="50%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case4
 ```
+
 6.case5
 
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t5.png" width="80%">
+
 😊You can run this test case by type in:
+
 ```
 make run_case5
 ```
@@ -416,6 +430,7 @@ make run_case5
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t6.png" width="80%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case6
 ```
@@ -425,6 +440,7 @@ make run_case6
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t7.png" width="90%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case7
 ```
@@ -434,6 +450,7 @@ make run_case7
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t8.png" width="90%">
 
 😊You can run this test case by type in:
+
 ```
 make run_case8
 ```
@@ -443,6 +460,7 @@ make run_case8
 This one is a little different as we did not use integer vertex value in this case (remember we are using `double` vertices right?).
 
 😊You can run this test case by type in:
+
 ```
 make run_case9
 ```
