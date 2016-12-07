@@ -37,13 +37,13 @@ int main(){
 cout<<"***********Minimum_Spanning_Tree*************"<<endl;
     cout << setw( 8 ) << "vertices";
     	for ( int i = 0; i < MST.getNumOfVertex(); i++  ){
-    		cout << setw( 8 ) << MST.getVertex(MST.getIndex(i));
+    		cout << setw( 8 ) << MST.getVertex( i );
     	}
     	cout << endl;
     for ( int i = 0; i < MST.getNumOfVertex(); i++  ){
-		    cout << setw( 8 ) << MST.getVertex(MST.getIndex(i));
+		    cout << setw( 8 ) << MST.getVertex( i );
     		for ( int j = 0; j < MST.getNumOfVertex(); j++){
-    			cout << setw( 8 ) << ( MST.adjacentCheck( MST.getVertex(MST.getIndex(i)), MST.getVertex(MST.getIndex(j)) ) ? '*' : ' ');
+    			cout << setw( 8 ) << ( MST.adjacentCheck( MST.getVertex( i ), MST.getVertex( j ) ) ? '*' : ' ');
     		}
 		cout << endl;
 	}

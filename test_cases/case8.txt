@@ -1,0 +1,7 @@
+addVertex 3.14
+addVertex 5
+addVertex 2.14
+addEdge 3.14 5 2
+addEdge 3.14 2.14 2
+addEdge 5 2.14 3
+runPrim 0
