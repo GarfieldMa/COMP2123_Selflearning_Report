@@ -36,4 +36,7 @@ run_case7: main
 run_case8: main
 	./$< < test_cases/case8.txt
 
-.PHONY: 
+clean:
+	rm *.o main
+	
+.PHONY: clean
