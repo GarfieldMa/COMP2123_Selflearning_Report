@@ -10,7 +10,7 @@ Today there’s gonna be something exciting to learn and at the end of day, you 
 
 - Understand what is the *Minimum-Spanning-Tree Problem*
 - Know what is *Prim’s Algorithm* and how to implement it
-- Understand how Prim’s Algorthim could be used to solve the minimum-spanning-tree problem
+- Understand how Prim’s Algorithm could be used to solve the minimum-spanning-tree problem
 
 ## Motivations
 *”So what is a minimum-spanning-tree problem anyways?”*
@@ -127,7 +127,7 @@ Graph<double> prim(Graph<double> g, int root){
 ```
 The return type should be a graph with double as vertices, same as the original graph.
 
-Two arguments here are  : 1. the graph we want to find our Minimum-Spanning Tree in and, 2.  the arbitrary root that we would want to begin with.
+Two arguments here are: 1. the graph we want to find our Minimum-Spanning Tree in and, 2. the arbitrary root that we would want to begin with.
 
 - Now, let's create an empty graph `minimum_spanning_tree` for storing what we have added.
 
@@ -224,7 +224,7 @@ After finding that vertex, Guess what comes next?😜
 Bingo!
 
 ####  Step 2: Add the Vertex to Our Tree and Set it To be Visited
-Now it’s time to scroll back to where functions in Graph.h is introduced cause we need to use it now. Take your time~ I will be waiting here🤗
+Now it is time to scroll back to where functions in Graph.h is introduced cause we need to use it now. Take your time~ I will be waiting here🤗
 
 Simple, isn't it? Ready for the code?😀
 
@@ -345,23 +345,23 @@ make run_case0
 ```
 The process of your algorithm should look like this if correct🙂
 
-① <img src="test_cases/t0_0.png" width="40%" style="float :center"> ② <img src="test_cases/t0_1.png" width="40%" style="float :center">
+① <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_0.png" width="40%" style="float :center"> ② <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_1.png" width="40%" style="float :center">
 
-③ <img src="test_cases/t0_2.png" width="40%" style="float :center"> ④ <img src="test_cases/t0_3.png" width="40%" style="float :center">
+③ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_2.png" width="40%" style="float :center"> ④ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_3.png" width="40%" style="float :center">
 
-⑤ <img src="test_cases/t0_4.png" width="40%" style="float :center"> ⑥ <img src="test_cases/t0_5.png" width="45%" style="float :center">
+⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_4.png" width="40%" style="float :center"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_5.png" width="45%" style="float :center">
 
 The process of your algorithm **could** look like this if correct🙂
 
 **Note:** Because this problem has more than one possible solution, the final result could be slightly different. Just make sure your total equals the one in picture.😊
 
-① <img src="test_cases/t1_0.png" width="40%" style="float :center"> ② <img src="test_cases/t1_1.png" width="40%" style="float :center">
+① <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_0.png" width="40%" style="float :center"> ② <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_1.png" width="40%" style="float :center">
 
-③ <img src="test_cases/t1_2.png" width="40%" style="float :center"> ④ <img src="test_cases/t1_3.png" width="40%" style="float :center">
+③ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_2.png" width="40%" style="float :center"> ④ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_3.png" width="40%" style="float :center">
 
-⑤ <img src="test_cases/t1_4.png" width="40%" style="float :center"> ⑥ <img src="test_cases/t1_5.png" width="40%" style="float :center">
+⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_4.png" width="40%" style="float :center"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_5.png" width="40%" style="float :center">
 
-⑦ <img src="test_cases/t1_6.png" width="40%" style="float :center"> ⑧ <img src="test_cases/t1_7.png" width="40%" style="float :center"> 
+⑦ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_6.png" width="40%" style="float :center"> ⑧ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_7.png" width="40%" style="float :center"> 
 
 2.case1
 
