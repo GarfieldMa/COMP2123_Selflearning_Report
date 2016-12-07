@@ -331,78 +331,66 @@ Now you should be able to use it if everything goes smoothly 🙂
 
 We have prepared 9 test cases for you!
 For instance, you can run them by command:
-					
-	make run_case0
+```					
+make run_case0
+```
 1.case0
-  
-  <img src="https://vvvfo.github.io/COMP2123_report_resources/t0.png" width="40%"> 
-	
-😊You can run this test case by type in:
-		  
-	  make run_case0
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t0.png" width="40%"> 
 
- 2.case1
- 
+😊You can run this test case by type in:
+```
+make run_case0
+```
+2.case1
  <img src="https://vvvfo.github.io/COMP2123_report_resources/t1.png" width="40%">
- 
- 😊You can run this test case by type in:
- 
-	  make run_case1
-
- 3.case2
- 
-  <img src="https://vvvfo.github.io/COMP2123_report_resources/t2.png" width="40%">
-  
-  😊You can run this test case by type in:
-  
-	  make run_case2
-
+😊You can run this test case by type in:
+```
+make run_case1
+```
+3.case2
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t2.png" width="40%">
+😊You can run this test case by type in:
+```
+make run_case2
+```
 4.case3
- 
-  <img src="https://vvvfo.github.io/COMP2123_report_resources/t3.png" width="50%">
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t3.png" width="50%">
 
 😊You can run this test case by type in:
+```
+make run_case2
+```
+5.case4
 
-	make run_case2
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t4.png" width="50%">
 
- 5.case4
- 
-  <img src="https://vvvfo.github.io/COMP2123_report_resources/t4.png" width="50%">
-	
 😊You can run this test case by type in:
-	
-		make run_case4
+```
+make run_case4
+```
+6.case5
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t5.png" width="80%">
+😊You can run this test case by type in:
+```
+make run_case5
+```
+7.case6
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t6.png" width="80%">
+  
+😊You can run this test case by type in:
+```
+make run_case6
+```
+8.case7
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t7.png" width="90%">
 
- 6.case5
- 
-  <img src="https://vvvfo.github.io/COMP2123_report_resources/t5.png" width="80%">
-  
-  😊You can run this test case by type in:
-  
-	  make run_case5
-
-   7.case6
- 
-  <img src="https://vvvfo.github.io/COMP2123_report_resources/t6.png" width="80%">
-  
-  😊You can run this test case by type in:
-  
-	  make run_case6
-
-	  
-   8.case7
- 
-  <img src="https://vvvfo.github.io/COMP2123_report_resources/t7.png" width="90%">
-  
-  😊You can run this test case by type in:
-  
-	  make run_case7
-	  
-  9.case8
-  
-   <img src="https://vvvfo.github.io/COMP2123_report_resources/t8.png" width="100%">
-	  
-  😊You can run this test case by type in:
-  
-	  make run_case7
-	  
+😊You can run this test case by type in:
+```
+make run_case7
+```
+9.case8
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t8.png" width="90%">
+😊You can run this test case by type in:
+```
+make run_case8
+```
