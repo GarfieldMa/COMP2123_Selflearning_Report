@@ -1,0 +1,11 @@
+addVertex 0
+addVertex 1
+addVertex 2
+addVertex 3
+addEdge 0 1 2
+addEdge 0 2 3
+addEdge 0 3 2
+addEdge 1 2 2
+addEdge 1 3 3
+addEdge 2 3 2
+runPrim 2

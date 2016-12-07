@@ -112,7 +112,7 @@ Return whether a graph contains a vertex.
 And now you are equipped with our weapon and shield, we can finally go on our conquest to find our *Minimum-Spanning-Tree*!
 
 ## Let’s Do It!🤗
-- First, you need to open the existing file `Prim.cpp`. Notice that the main function is already provided for you. You will be able to use it after a while
+- First, you need to open the existing file `Prim.cpp`. Notice that the main function is already provided for you. You will be able to use it after a while😉
 - 
 ```		
 gedit Prim.cpp
@@ -122,11 +122,11 @@ gedit Prim.cpp
 - First, let's see the skeleton of our algorithm
 
 		Graph<double> prim(Graph<double> g, int root){
-			//All your code in this section find their way here😊
+			//All your code in this implementation find their way here😊
 		}		
 The return type should be a graph with double as vertices, same as the original graph. 
 
-Two arguments here are 1. the graph we want to find our Minimum-Spanning Tree in and 2. the arbitrary root that we would want to begin with.
+Two arguments here are  : 1. the graph we want to find our Minimum-Spanning Tree in and, 2.  the arbitrary root that we would want to begin with.
 
 - Now, let's create an empty graph `minimum_spanning_tree` for storing what we have added.
 
@@ -176,11 +176,13 @@ for (int i = 0; i < g.getNumOfVertex(); ++i){
 ```
 vector<bool> visited;
 visited.resize(g.getNumOfVertex(), false);
-```
-####  The iteration should begin!
+``` 
+
+**Keep these three arrays in mind cause they are the keys to this problem!😉**
+##  The iteration should begin!
 Now, we could start the iteration to build the tree!
 
-A while loop would be a good choice in this case 😀.
+- A while loop would be a good choice in this case 😀.
 ```
 while(minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()){ 
  	//All the code in the iteration go to here
@@ -195,7 +197,7 @@ Now, we what we need to do in the iteration can be divided into 3 steps 😃
 #### Step 1 in iteration: Finding the UNVISITED Vertex with the Lowest Cost of Connection To
 We could use two `int` to record the cheapest cost and the corresponding index respectively.😀
 
-Now we can add the following code to iterate through the array `cost_of_cheapest_connection_to` to find the cheapest connection.
+Now we can add the following code to iterate through the array `cost_of_cheapest_connection_to` to find the cheapest connection.😆
 
 ```
 int cheapest_vertex_index = -1;
@@ -315,13 +317,13 @@ Buuuuuut, 😌 one more thing to consider......How could we determine the first 
 
 Think about the how we choose the vertex to add in the first step in while loop. Do you find something?😊
 
-Cool, the answer is to set value corresponds to `root` in `cost_of_cheapest_connection_to` to be `0`. Then in the first iteration of while loop, it will be recognized as the cheapest connection and be added to the tree!
+💡Cool, the answer is to set value corresponds to `root` in `cost_of_cheapest_connection_to` to be `0`. Then in the first iteration of while loop, it will be recognized as the cheapest connection and be added to the tree!
 
 What you need to do is simply to add 
 	
 	 cost_of_cheapest_connection_to[root] = 0;
 	
-Before while loop.
+**Before** the while loop.
 
 ##### Great! Congratulation! You have finished implement this algorithm! 
 Can't wait to try if it works? We have provided the main method for you to test your code!☺️
