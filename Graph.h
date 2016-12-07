@@ -3,8 +3,9 @@
 
 #include <iostream>
 #include <iomanip>
-#include <algorithm>
 #include <vector>
+
+#include "QuickSort.h"
 
 #define MAX 0X7ffffff
 #define DEBUG 0
@@ -313,7 +314,7 @@ template <typename T>
 ostream& operator << ( ostream& cout, const Graph<T>& g ){
 	cout << setw( 8 ) << "vertices";
 	vector<T> vec_tmp = g.vertices;
-	sort( vec_tmp.begin(), vec_tmp.end() );
+	QuickSort( vec_tmp.begin(), vec_tmp.end() );
 	for ( int i = 0; i < g.getNumOfVertex(); i++  ){
     		cout << setw( 8 ) << vec_tmp.at( i );
     }
