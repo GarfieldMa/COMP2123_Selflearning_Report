@@ -1,0 +1,55 @@
+addVertex 0
+addVertex 1
+addVertex 2
+addVertex 3
+addVertex 4
+addVertex 5
+addVertex 6
+addVertex 7
+addVertex 8
+addVertex 9
+addVertex 10
+addVertex 11
+addVertex 12
+addVertex 13
+addVertex 14
+addVertex 15
+addVertex 16
+addVertex 17
+addEdge 0 1 2
+addEdge 0 9 3
+addEdge 0 10 2
+addEdge 0 11 2
+addEdge 1 2 2
+addEdge 1 14 2
+addEdge 2 3 2
+addEdge 2 14 1
+addEdge 3 4 2
+addEdge 3 15 1
+addEdge 4 5 1
+addEdge 4 15 2
+addEdge 5 6 2
+addEdge 5 16 2
+addEdge 6 7 2
+addEdge 6 16 2
+addEdge 6 17 3
+addEdge 7 8 2
+addEdge 7 17 2
+addEdge 7 16 2
+addEdge 8 9 2
+addEdge 8 13 2
+addEdge 9 10 2
+addEdge 9 12 2
+addEdge 9 17 2
+addEdge 10 11 2
+addEdge 10 12 2
+addEdge 11 13 2
+addEdge 11 14 2
+addEdge 12 13 1
+addEdge 13 14 2
+addEdge 13 17 2
+addEdge 14 15 2
+addEdge 14 17 2
+addEdge 15 16 1
+addEdge 16 17 2
+runPrim 9
