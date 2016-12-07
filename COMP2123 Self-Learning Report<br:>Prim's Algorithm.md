@@ -153,7 +153,7 @@ Graph<double> minimum_spanning_tree(false);
 	- Yes, they should be initialized to the largest `int` possible to indicate we have not been there yet.
 	- Now, let's include them to our code.
 
-```
+```cpp
 int* cost_of_cheapest_connection_to = new int[g.getNumOfVertex()];
 
 for (int i = 0; i < g.getNumOfVertex(); ++i){
@@ -168,7 +168,7 @@ for (int i = 0; i < g.getNumOfVertex(); ++i){
 	- Correct! Let's use `-1` (or basically any negative integer) to represent it.
 	- Now let's implement this.
 
-```
+```C++
 int* source_of_cheapest_connection_to = new int[g.getNumOfVertex()];
 
 for (int i = 0; i < g.getNumOfVertex(); ++i){
@@ -473,3 +473,11 @@ This one is a little different as we did not use integer vertex value in this ca
 ```
 make run_case9
 ```
+
+
+## Final Remarks from the Team
+This marks the end of our COMP2123 Self-Learning Report and thank you reading all the way through the end. Our team devoted great effort into this to make it as excellent as possible, and our effort are largely invisible. For instance, we implemented a universal `Graph.h` that could be used for any type of vertex using templates, and our own sorting function (“QuickSort.h”) to support the data structure (as we are not allowed to use `<algorithm>`). Initially we implemented the `Graph.h` using adjacency list however due to restriction on the usage of `<map>` (and `<list>` … and `<pair>`) we finally redid it using adjacency matrix (and thus using `<vector>` only).
+
+Our teammates all learned a lot in the process of making this, and our whole project is version controlled using GitHub, here is link to the repo [https://github.com/GarfieldMa/COMP2123_Selflearning_Report](https://github.com/GarfieldMa/COMP2123_Selflearning_Report) (which will become public after 23:59 Dec 7, 2016) and this report is written in markdown and thank to our excellent Markdown editor iA Writer. Thank you again for reading!
+
+MA Rutian, MAO Wenxu and YAO Qingning
