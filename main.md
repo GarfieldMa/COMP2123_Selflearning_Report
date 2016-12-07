@@ -1,4 +1,4 @@
-ÂÂ---
+---
 title: Solving the Minimum-Spanning-Tree Problem with Prim’s Algorithm
 subtitle: COMP2123 Group-Based Self-Learning Report
 author: MA Rutian, MAO Wenxu, YAO Qingning
@@ -6,7 +6,7 @@ author: MA Rutian, MAO Wenxu, YAO Qingning
 
 # Solving the Minimum-Spanning-Tree Problem with Prim’s Algorithm
 ## Objectives
-Today there’s gonna be something exciting to learn and at the end of day, you shall be able to:
+Today there’s gonna be something exciting to learn, and at the end of day you shall be able to:
 
 - Understand what is the *Minimum-Spanning-Tree Problem*
 - Know what is *Prim’s Algorithm* and how to implement it
@@ -30,17 +30,17 @@ Recall from what you have learnt in COMP2121😀, a connected graph is a graph i
 **On the right** is **not** a connected graph as *3* is not connected to other parts of the graph. For instance, there is no path between *3* and *2*.
 
 #### 2. "Edge-Weighted"
-Still, from COMP2121, edge-weighted means that there is a numerical value for the weight of each edge.
+Still, from COMP2121, edge-weighted means that there is a numerical value for the weight of each edge, you can think about this as the length or the cost of the edge.
 
 #### 3. "Undirected"
 Once again from COMP2121, all edges in the graph indicate a two-way relationship which means they can be traversed in two directions.
 
-## Great! Now you know what context we are in, let's move on to see what we are looking for ---- a Minimum-Spanning-Tree!
+## Great! Now What's a Minimum-Spanning-Tree?
 ### What is a tree?
 Also a discrete math concept, basically, a tree is a connected graph with no circle.
 
 ### What is a Spanning-Tree in a graph?
-We call a tree a Spanning-Tree of graph g if and only if the tree spans (in other words includes) all the vertices in that graph.
+We call a tree a Spanning-Tree of graph `g` if and only if the tree spans (in other words includes) all the vertices in that graph.
 
 ### What is a Minimum-Spanning-Tree in a graph?
 <img src="https://vvvfo.github.io/COMP2123_report_resources/mst_1.png" width="30%" style="float :left">
@@ -53,7 +53,7 @@ Great question again, then here comes our main guest today - **Prim’s Algorith
 
 ## What is Prim’s Algorithm About?
 
- **In simple words, Prim's Algorithm can help us find the Minimum-Spanning-Tree we mentioned above.**
+ **In simple words, Prim's Algorithm can help us find the Minimum-Spanning-Tree we mentioned earlier.**
 
 *The algorithm may be described in following steps:*
 
@@ -69,7 +69,7 @@ Great question again, then here comes our main guest today - **Prim’s Algorith
 ### Your Trusty Data Structure - Graph
 How can we do this in C++? First we need to have  a data structure for modeling a *graph*. As this is not the main focus of today’s self learning, we have provided a `Graph.h` file which contains a basic implementation of the a Graph data structure! *It uses `template` in implementation for the purpose of a more generic usage, which could make some function calling a little bit different from things you already know.*
 
-For today, we will use vertices of type `double` and weight of type `int` and you only need to know our `Graph.h` contains methods that you could make use of in following way when implementing our algorithm:
+In today's session, we will be using `double` vertices, which means each vertex contains a `double` value, and this is for not letting you confuse vertex value with its storage index (which is type `int`) in later stage. We have provided you with a handy `Graph.h` to help you on your journey. You do not need to know the actual implementation details (if you are curious enough you can have a look), all you need to know about is these functions below:
 
 #### `Graph<double>(false)`
 
@@ -118,6 +118,8 @@ And now you are equipped with our weapon and shield, we can finally go on our co
 gedit Prim.cpp
 ```
 
+Or whatever text editor that you are comfortable with😜.
+
 ### Let's implement this algorithm!🤗
 - First, let's see the skeleton of our algorithm
 ```
@@ -135,7 +137,7 @@ Two arguments here are: 1. the graph we want to find our Minimum-Spanning Tree i
 Graph<double> minimum_spanning_tree(false);
 ```
 
-**Note:** the false here is for creating an undirected graph (you can refer to the Graph.h provided for implementation details)
+**Note:** the `false` here is for creating an undirected graph (you can refer to the Graph.h provided for implementation details)
 
 
 #### Three Important Arrays / Vectors for Your Quality of Life
@@ -171,7 +173,7 @@ for (int i = 0; i < g.getNumOfVertex(); ++i){
 - **Third:** we need one more array to record whether this node is already in the tree.
 	- A vector of `bool` can do the job right?
 	- And what should their initial value be when no node is in the tree? 🙈
-	- The answer is - `false`
+	- The answer is - `false`!
 	- Cool, let's do that
 
 ```
@@ -180,6 +182,7 @@ visited.resize(g.getNumOfVertex(), false);
 ```
 
 **Keep these three arrays in mind cause they are the keys to this problem!😉**
+
 ##  The iteration should begin!
 Now, we could start the iteration to build the tree!
 
@@ -189,14 +192,14 @@ while(minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()){
  	//All the code in the iteration go to here
 }
 ```
-Can you tell why the condition we set termination condition as `minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()` ? 🤔😜
+Can you tell why the condition we set termination condition as `minimum_spanning_tree.getNumOfVertex() != g.getNumOfVertex()`? 🤔😜
 
 Yeah, I know you can recall that the iteration should not stop until all nodes are added😊
 
 Now, we what we need to do in the iteration can be divided into 3 steps 😃
 
-#### Step 1 in iteration: Finding the UNVISITED Vertex with the Lowest Cost of Connection To
-We could use two `int` to record the cheapest cost and the corresponding index respectively.😀
+#### Step 1 in Iteration: Finding Nearest Unvisited Vertex
+We could use two `int` variables to record the cheapest cost and the corresponding index respectively.😀
 
 Now we can add the following code to iterate through the array `cost_of_cheapest_connection_to` to find the cheapest connection.😆
 
@@ -235,7 +238,7 @@ if (root != cheapest_vertex_index) {
 }
 ```
 
- **Note : we have to perform a checking before adding an edge because the first node we add to the tree does not have anything to connect to.**
+**Note : we have to perform a checking before adding an edge because the first node we add to the tree does not have anything to connect to.**
 
 Then, what left in this step is just to set the corresponding entry in the visited vector to be true.
 ``` 		
@@ -255,7 +258,7 @@ How do we update these values you might ask? Great question! Let's find out toge
 
 As vertices that could be affected are those **connected to the newly added vertex**, we can examine them one by one and update if necessary.
 
-##### Let's give it a try!
+##### Let's Give It a Try!
 **First**, we can get all the adjacent vertices using method from Graph.h
 ```
 vector<double> all_adjacencies = g.getAllAdjacentVertex(g.getVertex(cheapest_vertex_index));
@@ -326,7 +329,7 @@ What you need to do is simply to add
 
 **Before** the while loop.
 
-##### Great! Congratulation! You have finished implement this algorithm!
+##### Great! Congratulations! You Have Finished Implementing the Algorithm!
 Can't wait to try if it works? We have provided the main method for you to test your code!☺️
 Now you should be able to use it if everything goes smoothly 🙂
 
@@ -351,9 +354,14 @@ The process of your algorithm should look like this if correct🙂
 
 ⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_4.png" width="40%" style="float :center"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/t0_5.png" width="45%" style="float :center">
 
-The process of your algorithm **could** look like this if correct🙂
+2.case1
+<img src="https://vvvfo.github.io/COMP2123_report_resources/t1.png" width="40%">
 
-**Note:** Because this problem has more than one possible solution, the final result could be slightly different. Just make sure your total equals the one in picture.😊
+😊You can run this test case by type in:
+```
+make run_case1
+```
+
 
 ① <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_0.png" width="40%" style="float :center"> ② <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_1.png" width="40%" style="float :center">
 
@@ -361,17 +369,13 @@ The process of your algorithm **could** look like this if correct🙂
 
 ⑤ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_4.png" width="40%" style="float :center"> ⑥ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_5.png" width="40%" style="float :center">
 
-⑦ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_6.png" width="40%" style="float :center"> ⑧ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_7.png" width="40%" style="float :center"> 
+⑦ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_6.png" width="40%" style="float :center"> ⑧ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1_7.png" width="40%" style="float :center">
 
-2.case1
+The process of your algorithm **could** look like this if correct🙂
 
- <img src="https://vvvfo.github.io/COMP2123_report_resources/t1.png" width="40%">
+**Note:** Because this problem has more than one possible solution, the final result could be slightly different. Just make sure your total equals the one in picture.😊
 
-😊You can run this test case by type in:
-```
-make run_case1
-```
-①②③④⑤⑥⑦⑧
+We have also provide more test cases for you to play with, and the process is highly similar and after going through the above content, you should already have a good idea about what is going on there 😊.
 
 3.case2
 
@@ -432,4 +436,13 @@ make run_case7
 😊You can run this test case by type in:
 ```
 make run_case8
+```
+
+10.case9
+
+This one is a little different as we did not use integer vertex value in this case (remember we are using `double` vertices right?).
+
+😊You can run this test case by type in:
+```
+make run_case9
 ```
