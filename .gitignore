@@ -2,7 +2,6 @@
 test
 main
 .DS_Store
-*.pdf
 
 # Prerequisites
 *.d
