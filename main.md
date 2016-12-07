@@ -1,4 +1,4 @@
----
+ÂÂ---
 title: Solving the Minimum-Spanning-Tree Problem with Prim’s Algorithm
 subtitle: COMP2123 Group-Based Self-Learning Report
 author: MA Rutian, MAO Wenxu, YAO Qingning
@@ -224,7 +224,7 @@ After finding that vertex, Guess what comes next?😜
 Bingo!
 
 ####  Step 2: Add the Vertex to Our Tree and Set it To be Visited
-Now it’s time to scroll back to where functions in Graph.h is introduced cause we need to use it now. Take your time~ I will be waiting here😊
+Now it’s time to scroll back to where functions in Graph.h is introduced cause we need to use it now. Take your time~ I will be waiting here🤗
 
 Simple, isn't it? Ready for the code?😀
 
@@ -336,31 +336,61 @@ For instance, you can run them by command:
 make run_case0
 ```
 1.case0
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t0.png" width="40%">
 
 😊You can run this test case by type in:
 ```
 make run_case0
 ```
+The process of your algorithm should look like this if correct🙂
+
+① <img src="test_cases/t0_0.png" width="40%" style="float :center"> ② <img src="test_cases/t0_1.png" width="40%" style="float :center">
+
+③ <img src="test_cases/t0_2.png" width="40%" style="float :center"> ④ <img src="test_cases/t0_3.png" width="40%" style="float :center">
+
+⑤ <img src="test_cases/t0_4.png" width="40%" style="float :center"> ⑥ <img src="test_cases/t0_5.png" width="45%" style="float :center">
+
+The process of your algorithm **could** look like this if correct🙂
+
+**Note:** Because this problem has more than one possible solution, the final result could be slightly different. Just make sure your total equals the one in picture.😊
+
+① <img src="test_cases/t1_0.png" width="40%" style="float :center"> ② <img src="test_cases/t1_1.png" width="40%" style="float :center">
+
+③ <img src="test_cases/t1_2.png" width="40%" style="float :center"> ④ <img src="test_cases/t1_3.png" width="40%" style="float :center">
+
+⑤ <img src="test_cases/t1_4.png" width="40%" style="float :center"> ⑥ <img src="test_cases/t1_5.png" width="40%" style="float :center">
+
+⑦ <img src="test_cases/t1_6.png" width="40%" style="float :center"> ⑧ <img src="test_cases/t1_7.png" width="40%" style="float :center"> 
+
 2.case1
+
  <img src="https://vvvfo.github.io/COMP2123_report_resources/t1.png" width="40%">
+
 😊You can run this test case by type in:
 ```
 make run_case1
 ```
+①②③④⑤⑥⑦⑧
+
 3.case2
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t2.png" width="40%">
+
 😊You can run this test case by type in:
 ```
 make run_case2
 ```
+
 4.case3
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t3.png" width="50%">
 
 😊You can run this test case by type in:
 ```
 make run_case2
 ```
+
 5.case4
 
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t4.png" width="50%">
@@ -370,27 +400,35 @@ make run_case2
 make run_case4
 ```
 6.case5
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t5.png" width="80%">
 😊You can run this test case by type in:
 ```
 make run_case5
 ```
+
 7.case6
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t6.png" width="80%">
 
 😊You can run this test case by type in:
 ```
 make run_case6
 ```
+
 8.case7
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t7.png" width="90%">
 
 😊You can run this test case by type in:
 ```
 make run_case7
 ```
+
 9.case8
+
 <img src="https://vvvfo.github.io/COMP2123_report_resources/t8.png" width="90%">
+
 😊You can run this test case by type in:
 ```
 make run_case8
