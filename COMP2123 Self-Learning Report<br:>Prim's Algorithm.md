@@ -278,6 +278,7 @@ vector<double> all_adjacencies = g.getAllAdjacentVertex(g.getVertex(cheapest_ver
 This gives a vector of all vertices adjacent to the newly added one.
 
 **Second**, let's iterate through these vertices to see if update is necessary.
+
 ```
 for (vector<double>::iterator it = all_adjacencies.begin(); it != all_adjacencies.end(); it++) {
 
