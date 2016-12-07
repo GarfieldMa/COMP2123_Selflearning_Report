@@ -112,8 +112,8 @@ Return whether a graph contains a vertex.
 And now you are equipped with our weapon and shield, we can finally go on our conquest to find our *Minimum-Spanning-Tree*!
 
 ## Let’s Do It!🤗
-- First, you need to open the existing file `Prim.cpp`. Notice that the main function is already provided for you. You will be able to use it after a while😉
-- 
+- First, you need to open the existing file `Prim.cpp`. 
+
 ```		
 gedit Prim.cpp
 ```
@@ -333,9 +333,71 @@ We have prepared 9 test cases for you!
 For instance, you can run them by command:
 					
 	make run_case0
-1. case 0
-//graph
-2. case 1
-//graph
-
+1.case0
+  
+  <img src="https://vvvfo.github.io/COMP2123_report_resources/t0.png" width="40%"> 
 	
+😊You can run this test case by type in:
+		  
+	  make run_case0
+
+ 2.case1
+ 
+ <img src="https://vvvfo.github.io/COMP2123_report_resources/t1.png" width="40%">
+ 
+ 😊You can run this test case by type in:
+ 
+	  make run_case1
+
+ 3.case2
+ 
+  <img src="https://vvvfo.github.io/COMP2123_report_resources/t2.png" width="40%">
+  
+  😊You can run this test case by type in:
+  
+	  make run_case2
+
+4.case3
+ 
+  <img src="https://vvvfo.github.io/COMP2123_report_resources/t3.png" width="50%">
+
+😊You can run this test case by type in:
+
+	make run_case2
+
+ 5.case4
+ 
+  <img src="https://vvvfo.github.io/COMP2123_report_resources/t4.png" width="50%">
+	
+😊You can run this test case by type in:
+	
+		make run_case4
+
+ 6.case5
+ 
+  <img src="https://vvvfo.github.io/COMP2123_report_resources/t5.png" width="80%">
+  
+  😊You can run this test case by type in:
+  
+	  make run_case5
+
+   7.case6
+ 
+  <img src="https://vvvfo.github.io/COMP2123_report_resources/t6.png" width="80%">
+  
+  😊You can run this test case by type in:
+  
+	  make run_case6
+
+	  
+   8.case7
+ 
+  <img src="https://vvvfo.github.io/COMP2123_report_resources/t7.png" width="90%">
+  
+  😊You can run this test case by type in:
+  
+	  make run_case7
+	  
+  9.case8
+	  
+	  
